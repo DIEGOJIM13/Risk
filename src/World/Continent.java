@@ -11,11 +11,17 @@ public class Continent {
 	private String name;
 	private World world;
 	
+	public Continent(){
+		countries = new ArrayList<Country>();
+		bonus = 0;
+		color = "unknown";
+		name = "unkown";
+		world = new World();
+	}
 	public void addCountry(Country c){
 		countries.add(c);
 	}
 	public void removeCountry(Country c){
-		int i = 0;
 		for(Country A : countries){
 			if(A.equals(c)){
 				countries.remove(A);

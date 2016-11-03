@@ -5,6 +5,11 @@ public class Card {
 	private int numStars;
 	private Player player;
 	
+	public Card(){
+		country = new Country();
+		numStars = 0;
+		player = new Player();
+	}
 	public void setCountry(Country c){
 		country = c;
 	}
