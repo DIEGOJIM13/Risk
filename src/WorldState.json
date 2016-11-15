@@ -1,0 +1,29 @@
+[
+	{
+		"Name": "North America",
+		"Bonus": 5,
+		"Countries": [
+		
+		]
+	},
+	{
+		"Name": "South America",
+		"Bonus": 2
+	}
+	{
+		"Name": "Africa",
+		"Bonus": 5
+	},
+	{
+		"Name": "Europe",
+		"Bonus": 5
+	},
+	{
+		"Name": "Asia",
+		"Bonus": 7
+	},
+	{
+		"Name": "Australia",
+		"Bonus": 2
+	}
+]

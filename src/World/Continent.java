@@ -11,14 +11,23 @@ public class Continent {
 	private String name;
 	private World world;
 	
-	public Continent(){
-		countries = new ArrayList<Country>();
-		bonus = 0;
-		color = "unknown";
-		name = "unkown";
-		world = new World();
+	public Continent(String color, String name, int bonus){
+		this.countries = new ArrayList<Country>();
+		this.bonus = bonus;
+		this.color = color;
+		this.name = name;
+		//world = new World(); // why is this here?
+	}
+	
+	public String toString() {
+		String retString = "";
+		for(Country c: this.countries) {
+			retString += c.toString();
+		}
+		return retString;
 	}
 	public void addCountry(Country c){
+		c.setContinent(this);
 		countries.add(c);
 	}
 	public void removeCountry(Country c){
@@ -56,8 +65,8 @@ public class Continent {
 	public World getWorld(){
 		return world;
 	}
-	public Player checkIfRuled(){
+	/*public Player checkIfRuled(){
 		Player placeHolder = new Player();
 		return placeHolder;
-	}
+	}*/
 }

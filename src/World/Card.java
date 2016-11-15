@@ -5,10 +5,10 @@ public class Card {
 	private int numStars;
 	private Player player;
 	
-	public Card(){
-		country = new Country();
-		numStars = 0;
-		player = new Player();
+	public Card(Country country, int numStars){
+		this.country = country;
+		this.numStars = numStars;
+		player = null;
 	}
 	public void setCountry(Country c){
 		country = c;

@@ -16,6 +16,9 @@ public class Group {
 	public void setPlayers(ArrayList<Player> players) {
 		this.players = players;
 	}
+	public void addPlayer(Player p1) {
+		this.players.add(p1);
+	}
 	public World getWorld() {
 		return world;
 	}

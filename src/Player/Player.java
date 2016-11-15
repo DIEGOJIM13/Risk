@@ -14,6 +14,11 @@ public class Player {
 	private ArrayList<Card> hand = new ArrayList<Card>();
 	private Group party;
 	
+	public Player(String name, String color) {
+		this.name = name;
+		this.color = color;
+	}
+	
 	public String getName() {
 		return name;
 	}

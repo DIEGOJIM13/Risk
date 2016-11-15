@@ -14,14 +14,25 @@ public class Country {
 	private int yLoc;
 	private ArrayList<Country> borderingCountries;
 	
-	public Country(){
-		continent = new Continent();
-		player = new Player();
-		troops = new ArrayList<Troop>();
-		name = "unknown";
-		xLoc = 0;
-		yLoc = 0;
-		borderingCountries = new ArrayList<Country>();
+	public Country(String name){
+		this.continent = null; // will set this in the addCountry() method
+		this.player = null;
+		this.troops = new ArrayList<Troop>();
+		this.name = name;
+		this.xLoc = 0;
+		this.yLoc = 0;
+		this.borderingCountries = new ArrayList<Country>();
+	}
+	public String toString() {
+		String retString = "Country Name: " + this.name + "\n";
+		retString += "Player: " + this.player.getName() + "\n";
+		retString += "Continent: " + this.continent.getName() + "\n";
+		retString += "Bordering Countries: ";
+		for(Country c : this.borderingCountries) {
+			retString += c.getName() + ", ";
+		}
+		retString += "\n\n";
+		return retString;
 	}
 	public void setContinent(Continent c){
 		continent = c;
@@ -67,8 +78,9 @@ public class Country {
 	public int getYLoc(){
 		return yLoc;
 	}
-	public void setBorderingCountries(ArrayList<Country> countries){
-		borderingCountries = countries;
+	public void addBorderingCountry(Country c1){
+		this.borderingCountries.add(c1);
+		c1.getBorderingCountries().add(this);
 	}
 	public ArrayList<Country> getBorderingCountries(){
 		return borderingCountries;
