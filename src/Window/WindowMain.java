@@ -385,8 +385,8 @@ public class WindowMain {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JLabel label_7 = new JLabel("");
-		//label.setIcon(new ImageIcon("GimpFiles\\Map.png")); //This should work for you, let me know if it does not. -Diego
-		label_7.setIcon(new ImageIcon("C:\\Users\\Diego\\Documents\\eclipseWorkspace\\Risk\\GimpFiles\\Map.png"));
+		label.setIcon(new ImageIcon("GimpFiles\\StartGame.png")); //This should work for you, let me know if it does not. -Diego
+		label_7.setIcon(new ImageIcon("GimpFiles\\Map.png"));
 		label_7.setBounds(0, 29, 1194, 831);
 		map.add(label_7);
 	
