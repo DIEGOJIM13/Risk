@@ -1,5 +1,6 @@
 package Window;
 
-public class Game extends Window{
 
+public class Game{
+	
 }
