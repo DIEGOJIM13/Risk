@@ -12,9 +12,16 @@ import java.awt.Color;
 import java.awt.CardLayout;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
+
+import Player.Player;
+import World.*;
+
 import javax.swing.border.BevelBorder;
 import java.awt.GridLayout;
 import javax.swing.JFormattedTextField;
+
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import javax.swing.JSplitPane;
@@ -30,10 +37,12 @@ public class WindowMain {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
+	private GameState gameState;
 	/**
 	 * Create the application.
 	 */
 	public WindowMain() {
+		gameState = new GameState();
 		initialize();
 	}
 
@@ -42,6 +51,7 @@ public class WindowMain {
 	 */
 	private void initialize() {
 		frame1 = new JFrame();
+		gameState.playSound("music\\intro_music.wav");
 		frame1.setTitle("Risk - The Game of Global Domination");
 		frame1.getContentPane().setBackground(Color.LIGHT_GRAY);
 		frame1.setResizable(false);
@@ -73,7 +83,6 @@ public class WindowMain {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Player Selection");
-				
 			}
 		});
 		
@@ -108,13 +117,10 @@ public class WindowMain {
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 1194, 860);
 		mainScreen.add(label);
-		//label.setIcon(new ImageIcon("GimpFiles\\StartGame.png")); //This should work for you, let me know if it does not. -Diego
-		label.setIcon(new ImageIcon("C:\\Users\\Diego\\Documents\\eclipseWorkspace\\Risk\\GimpFiles\\StartGame.png"));
-		
+		label.setIcon(new ImageIcon("GimpFiles\\StartGame.png")); //This should work for you, let me know if it does not. -Diego
 		playerSelect.setBackground(Color.LIGHT_GRAY);
 		//frame1.getContentPane().add(playerSelect, "UnknownPlyer");
 		playerSelect.setLayout(null);
-		
 		JPanel playerQuestion = new JPanel();
 		playerQuestion.setLayout(null);
 		playerQuestion.setBorder(new LineBorder(new Color(0, 0, 0), 5, true));
@@ -286,6 +292,29 @@ public class WindowMain {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Game");
+				gameState.stopCurrentSound();
+				if(panel_8.isVisible()) {
+					Player p1 = new Player(textField.getText(), "Blue");
+					gameState.addPlayer(p1);
+				}
+				if(panel_9.isVisible()) {
+					Player p2 = new Player(textField_1.getText(), "Blue");
+					gameState.addPlayer(p2);
+				}
+				if(panel_10.isVisible()) {
+					Player p3 = new Player(textField_2.getText(), "Blue");
+					gameState.addPlayer(p3);
+				}
+				if(panel_11.isVisible()) {
+					Player p4 = new Player(textField_3.getText(), "Blue");
+					gameState.addPlayer(p4);
+				}
+				if(panel_12.isVisible()) {
+					Player p5 = new Player(textField_4.getText(), "Blue");
+					gameState.addPlayer(p5);
+				}
+				gameState.gameStart();
+				System.out.println(gameState);
 			}
 		});
 		panel_1.setLayout(null);
@@ -385,11 +414,9 @@ public class WindowMain {
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		JLabel label_7 = new JLabel("");
-		label.setIcon(new ImageIcon("GimpFiles\\StartGame.png")); //This should work for you, let me know if it does not. -Diego
 		label_7.setIcon(new ImageIcon("GimpFiles\\Map.png"));
 		label_7.setBounds(0, 29, 1194, 831);
 		map.add(label_7);
-	
 
 	}
 }
