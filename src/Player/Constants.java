@@ -2,10 +2,13 @@ package Player;
 
 import java.lang.reflect.Array;
 
-public class Constants {
-	private Array starRef;
+public class Constants { // might not need this whole class. Eddie is dumb for thinking of it.
+	private Array starRef; // might not need this
 	private int numTroopBeTurn;
 	
+	public Constants() {
+		
+	}
 	public Array getStarRef() {
 		return starRef;
 	}

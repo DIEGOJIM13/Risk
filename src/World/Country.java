@@ -2,7 +2,7 @@ package World;
 
 import java.util.ArrayList;
 
-import Army.Troop;
+import Army.*;
 import Player.Player;
 
 public class Country {
@@ -31,6 +31,7 @@ public class Country {
 		for(Country c : this.borderingCountries) {
 			retString += c.getName() + ", ";
 		}
+		retString += "Number of troops: " + this.troops.size();
 		retString += "\n\n";
 		return retString;
 	}
@@ -48,6 +49,12 @@ public class Country {
 	}
 	public void addTroop(Troop t){
 		troops.add(t);
+	}
+	public void addInfrantry(int numTroops) {
+		for(int i = 0; i < numTroops; i++) {
+			Infantry temp = new Infantry();
+			this.troops.add(temp);
+		}
 	}
 	public void removeTroop(Troop t){
 		for(Troop A : troops){

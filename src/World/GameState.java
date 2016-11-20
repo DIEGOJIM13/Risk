@@ -49,4 +49,15 @@ public class GameState {
 		this.allPlayers.addPlayer(p1);
 	}
 	
+	public boolean checkWinner() {
+		boolean won = false;
+		if (this.allPlayers.getPlayers().size() == 1) { // if there is only one player they already win
+			return true;
+		}
+		for(Player p : this.allPlayers.getPlayers()) {
+			won = this.world.checkIfWorldOwned(p);
+		}
+		return won;
+	}
+	
 }

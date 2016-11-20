@@ -1,6 +1,9 @@
 package World;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Random;
+
 import Player.*;
 
 public class World {
@@ -281,8 +284,9 @@ public class World {
 		}
 		
 		/*
-		 Giving each player a card unit there are no cards left.
+		 Shuffling the deck and then giving each player a card unit there are no cards left.
 		 */
+		this.shuffleDeck();
 		for(int i = 0; i < this.deck.size(); i++) { 
 			players.getPlayers().get(i % players.getPlayers().size()).getHand().add(this.deck.get(i));
 		}
@@ -295,12 +299,27 @@ public class World {
 		for(Player p : players.getPlayers()) {
 			for(Card c : p.getHand()) {
 				c.getCountry().setPlayer(p);
-				//c.getCountry().addTroop(c.getNumStars());
+				c.getCountry().addInfrantry(c.getNumStars());
+				p.addInfrantry(c.getNumStars());
+				p.addCountry(c.getCountry());
 			}
 			p.getHand().clear(); // putting it back in the deck
 		}
 	}
-	public boolean checkWinner(){
+	public boolean checkIfWorldOwned(Player p){
+		for(Continent con : this.continents) {
+			for(Country cou : con.getCountries()) {
+				if(cou.getPlayer() == p) {
+					return false;
+				}
+			}
+		}
+		
 		return true;
+	}
+	
+	public void shuffleDeck() {
+		long seed = System.nanoTime(); // shuffling
+		Collections.shuffle(this.deck, new Random(seed));
 	}
 }

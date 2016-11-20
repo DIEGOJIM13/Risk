@@ -12,8 +12,15 @@ public class driver {
 		state.addPlayer(p2);
 		state.addPlayer(p3);
 		state.gameStart(); // starting the game which gives the countries to the users
+		System.out.println("World info:");
 		System.out.println(state); // printing everything about the game
-
+		while(!state.checkWinner()) {
+			for(Player p: state.getAllPlayers().getPlayers()) { // going through a players whole turn
+				p.begTurn();
+				p.midTurn();
+				p.endTurn();
+			}
+		}
 	}
 
 }
