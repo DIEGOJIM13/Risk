@@ -31,7 +31,7 @@ public class GameState {
 		for(Player p : this.allPlayers.getPlayers()) {
 			retString += p.getName() + "\n";
 		}
-		return retString +"\n" + world.toString(); // will have other ones but right now just the string
+		return retString +"\nWorld Info:\n" + world.toString(); // will have other ones but right now just the string
 	}
 	
 	public void gameStart() { // will start the game setting player 1 as the current player
@@ -64,15 +64,18 @@ public class GameState {
 		this.allPlayers.addPlayer(p1);
 	}
 	
-	public boolean checkWinner() {
+	public Player checkWinner() {
 		boolean won = false;
 		if (this.allPlayers.getPlayers().size() == 1) { // if there is only one player they already win
-			return true;
+			return this.allPlayers.getPlayers().get(0);
 		}
 		for(Player p : this.allPlayers.getPlayers()) {
 			won = this.world.checkIfWorldOwned(p);
+			if(won) {
+				return p;
+			}
 		}
-		return won;
+		return null;
 	}
 	
 	public void playSound(String filename) {

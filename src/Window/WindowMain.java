@@ -413,8 +413,9 @@ public class WindowMain {
 		JMenuItem mntmNewMenuItem = new JMenuItem("item1");
 		mnNewMenu.add(mntmNewMenuItem);
 		
+		
 		JLabel label_7 = new JLabel("");
-		label_7.setIcon(new ImageIcon("GimpFiles\\Map.png"));
+		label_7.setIcon(new ImageIcon("GimpFiles\\blankMap.png"));
 		label_7.setBounds(0, 29, 1194, 831);
 		map.add(label_7);
 

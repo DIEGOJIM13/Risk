@@ -12,8 +12,6 @@ public class driver extends JFrame{
 		setVisible(true);
 	}
 	public static void main(String[] args) {
-		System.out.println("Suck Me Not Mr. 104");
-		//JOptionPane.showMessageDialog(null, "Hello World");
 		WindowMain w = new WindowMain();
 	}
 
