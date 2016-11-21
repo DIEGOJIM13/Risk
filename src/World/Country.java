@@ -56,12 +56,9 @@ public class Country {
 			this.troops.add(temp);
 		}
 	}
-	public void removeTroop(Troop t){
-		for(Troop A : troops){
-			if(A.equals(t)){
-				troops.remove(A);
-				break;
-			}
+	public void removeTroops(int numToRemove){
+		for(int i = 0; i < numToRemove; i++) { // removing the troops from the attacking country
+			this.troops.remove(this.troops.size() - 1);
 		}
 	}
 	public ArrayList<Troop> getTroops(){

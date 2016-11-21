@@ -85,6 +85,20 @@ public class Player {
 		return null;
 	}
 	
+	public Country checkIfCanMove(Country origin, String countryName) {
+		if( (this.checkIfOwned(countryName) == null) || (origin.getTroops().size() == 1) ) { // will return null if the player already owns the country or if there is only one troop
+			return null;
+		}
+		
+		for(Country c1 : origin.getBorderingCountries()) { // checking to see if the country is bordering the country
+			if (c1.getName().equals(countryName)) {
+				return c1;
+			}
+		}
+		
+		return null;
+	}
+	
 	public void attack(Country c1, Country c2) {
 		Random rand = new Random(); // so we can create random numbers to simulate rolling (omg I am such a raver)
 		ArrayList<Integer> attackRoll = new ArrayList<Integer>(); // will contain all of the attacker's rolls
@@ -128,9 +142,7 @@ public class Player {
 				moveNum = sc.nextInt();				
 			}while(moveNum < c1.getTroops().size());
 			c2.addInfrantry(moveNum); // adding the troops to the conquered country
-			for(int i = 0; i < moveNum; i++) { // removing the troops from the attacking country
-				c1.getTroops().remove(c1.getTroops().size() - 1);
-			}
+			c1.removeTroops(moveNum); // removing troops from the origin country
 		}
 	}
 	public void begTurn() {
@@ -150,11 +162,43 @@ public class Player {
 			}
 		}
 	}
+	public void removeTroops(int numToRemove) {
+		for(int i = 0; i < numToRemove; i++) {
+			this.numTroops.remove(this.numTroops.size() - 1);
+		}
+	}
 	public void moveTroops(Country c1, Country c2, int toMove) {
-
+		c1.removeTroops(toMove);
+		c2.addInfrantry(toMove);
 	}
 	public void endTurn() {
-		System.out.println(this.getName() + "'s turn. It is the end of their turn.");				
+		System.out.println(this.getName() + "'s turn. It is the end of their turn.");
+		Country origin = null;
+		Country destination = null;
+		int moveNum = 0;
+		System.out.println("Do you want to move troops?");
+		String Answer = sc.nextLine();
+		while(Answer.equals("Yes") | Answer.equals("yes")) {
+			do {
+				System.out.println("Please select a country that you would like to move from.");
+				String coString = sc.nextLine();
+				origin = this.checkIfOwned(coString);
+			} while (origin == null);
+	
+			do {
+				System.out.println("Please select a country that you would like to move to.");
+				String coString = sc.nextLine();
+				destination = this.checkIfCanMove(origin, coString);
+			} while (destination == null);
+			do {
+				System.out.println("Please select the number of troops you would like to move.");
+				moveNum = sc.nextInt();
+			} while (moveNum > origin.getTroops().size());
+			
+			this.moveTroops(origin, destination, moveNum);
+			System.out.println("Do you want to move more troops?");
+			Answer = sc.nextLine();
+		}
 	}
 	public void midTurn() {
 		System.out.println(this.getName() + "'s turn. It is the middle of their turn.");
