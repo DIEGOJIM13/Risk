@@ -69,7 +69,6 @@ public class Player {
 		
 		return null;
 	}
-	
 	public Country checkIfCanAttack(Country origin, String countryName) {
 		
 		if( (this.checkIfOwned(countryName) != null) || (origin.getTroops().size() == 1) ) { // will return null if the player already owns the country or if there is only one troop

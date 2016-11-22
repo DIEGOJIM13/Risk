@@ -27,6 +27,8 @@ import java.awt.event.MouseEvent;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
+import java.awt.SystemColor;
+import javax.swing.JTextArea;
 
 public class WindowMain {
 
@@ -51,10 +53,10 @@ public class WindowMain {
 	 */
 	private void initialize() {
 		frame1 = new JFrame();
+		frame1.setResizable(false);
 		gameState.playSound("music\\intro_music.wav");
 		frame1.setTitle("Risk - The Game of Global Domination");
 		frame1.getContentPane().setBackground(Color.LIGHT_GRAY);
-		frame1.setResizable(false);
 		frame1.setBounds(100, 100, 1200, 900);
 		frame1.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame1.setVisible(true);
@@ -67,6 +69,7 @@ public class WindowMain {
 		JPanel mainScreen = new JPanel();
 		JPanel playerSelect = new JPanel();
 		JPanel map = new JPanel();
+		map.setBackground(Color.LIGHT_GRAY);
 		
 		cards.add(mainScreen, "Main Screen");
 		cards.add(playerSelect, "Player Selection");
@@ -141,10 +144,15 @@ public class WindowMain {
 		JPanel panel_4 = new JPanel();
 		JPanel panel_5 = new JPanel();
 		JPanel panel_8 = new JPanel();
+		panel_8.setBackground(Color.ORANGE);
 		JPanel panel_9 = new JPanel();
+		panel_9.setBackground(Color.MAGENTA);
 		JPanel panel_10 = new JPanel();
+		panel_10.setBackground(Color.GREEN);
 		JPanel panel_11 = new JPanel();
+		panel_11.setBackground(SystemColor.textHighlight);
 		JPanel panel_12 = new JPanel();
+		panel_12.setBackground(Color.YELLOW);
 		panel_8.setVisible(false);
 		panel_9.setVisible(false);
 		panel_10.setVisible(false);
@@ -286,7 +294,6 @@ public class WindowMain {
 		label_6.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		label_6.setBounds(0, 0, 200, 50);
 		panel_6.add(label_6);
-		
 		JPanel panel_1 = new JPanel();
 		panel_1.addMouseListener(new MouseAdapter() {
 			@Override
@@ -294,15 +301,15 @@ public class WindowMain {
 				cardLayout.show(cards, "Game");
 				gameState.stopCurrentSound();
 				if(panel_8.isVisible()) {
-					Player p1 = new Player(textField.getText(), "Blue");
+					Player p1 = new Player(textField.getText(), "Orange");
 					gameState.addPlayer(p1);
 				}
 				if(panel_9.isVisible()) {
-					Player p2 = new Player(textField_1.getText(), "Blue");
+					Player p2 = new Player(textField_1.getText(), "Magenta");
 					gameState.addPlayer(p2);
 				}
 				if(panel_10.isVisible()) {
-					Player p3 = new Player(textField_2.getText(), "Blue");
+					Player p3 = new Player(textField_2.getText(), "Green");
 					gameState.addPlayer(p3);
 				}
 				if(panel_11.isVisible()) {
@@ -310,11 +317,16 @@ public class WindowMain {
 					gameState.addPlayer(p4);
 				}
 				if(panel_12.isVisible()) {
-					Player p5 = new Player(textField_4.getText(), "Blue");
+					Player p5 = new Player(textField_4.getText(), "Yellow");
 					gameState.addPlayer(p5);
 				}
 				gameState.gameStart();
 				System.out.println(gameState);
+				System.out.println(gameState.getAllPlayers().getPlayers().size());
+				if (gameState.getAllPlayers().getPlayers().size() > 0){
+					System.out.println(gameState.getAllPlayers().getPlayers().get(0).getName());
+					frmtdtxtfldPlayer.setText(gameState.getAllPlayers().getPlayers().get(0).getName());
+				}
 			}
 		});
 		panel_1.setLayout(null);
@@ -403,6 +415,12 @@ public class WindowMain {
 		
 		map.setLayout(null);
 		
+		
+		JLabel lblPlayer = new JLabel("");
+		lblPlayer.setIcon(new ImageIcon("C:\\Users\\Diego\\Documents\\eclipseWorkspace\\Risk\\GimpFiles\\Map.png"));
+		lblPlayer.setBounds(0, 29, 1194, 831);
+		map.add(lblPlayer);
+		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 1200, 30);
 		map.add(menuBar);
@@ -413,11 +431,54 @@ public class WindowMain {
 		JMenuItem mntmNewMenuItem = new JMenuItem("item1");
 		mnNewMenu.add(mntmNewMenuItem);
 		
+		JFormattedTextField frmtdtxtfldPlayer = new JFormattedTextField();
+		frmtdtxtfldPlayer.setBackground(Color.LIGHT_GRAY);
+		frmtdtxtfldPlayer.setForeground(Color.ORANGE);
+		frmtdtxtfldPlayer.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		
-		JLabel label_7 = new JLabel("");
-		label_7.setIcon(new ImageIcon("GimpFiles\\blankMap.png"));
-		label_7.setBounds(0, 29, 1194, 831);
-		map.add(label_7);
+		
+		frmtdtxtfldPlayer.setHorizontalAlignment(SwingConstants.CENTER);
+		frmtdtxtfldPlayer.setEditable(false);
+		frmtdtxtfldPlayer.setBounds(100, 40, 175, 60);
+		
+		
+		map.add(frmtdtxtfldPlayer);
+		
+		JFormattedTextField formattedTextField = new JFormattedTextField();
+		formattedTextField.setHorizontalAlignment(SwingConstants.CENTER);
+		formattedTextField.setForeground(Color.ORANGE);
+		formattedTextField.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		formattedTextField.setEditable(false);
+		formattedTextField.setBackground(Color.LIGHT_GRAY);
+		formattedTextField.setBounds(300, 40, 175, 60);
+		map.add(formattedTextField);
+		
+		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
+		formattedTextField_1.setHorizontalAlignment(SwingConstants.CENTER);
+		formattedTextField_1.setForeground(Color.ORANGE);
+		formattedTextField_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		formattedTextField_1.setEditable(false);
+		formattedTextField_1.setBackground(Color.LIGHT_GRAY);
+		formattedTextField_1.setBounds(500, 40, 175, 60);
+		map.add(formattedTextField_1);
+		
+		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
+		formattedTextField_2.setHorizontalAlignment(SwingConstants.CENTER);
+		formattedTextField_2.setForeground(Color.ORANGE);
+		formattedTextField_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		formattedTextField_2.setEditable(false);
+		formattedTextField_2.setBackground(Color.LIGHT_GRAY);
+		formattedTextField_2.setBounds(700, 40, 175, 60);
+		map.add(formattedTextField_2);
+		
+		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
+		formattedTextField_3.setHorizontalAlignment(SwingConstants.CENTER);
+		formattedTextField_3.setForeground(Color.ORANGE);
+		formattedTextField_3.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		formattedTextField_3.setEditable(false);
+		formattedTextField_3.setBackground(Color.LIGHT_GRAY);
+		formattedTextField_3.setBounds(900, 40, 175, 60);
+		map.add(formattedTextField_3);
 
 	}
 }
