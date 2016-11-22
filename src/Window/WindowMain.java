@@ -144,13 +144,13 @@ public class WindowMain {
 		JPanel panel_4 = new JPanel();
 		JPanel panel_5 = new JPanel();
 		JPanel panel_8 = new JPanel();
-		panel_8.setBackground(Color.ORANGE);
+		panel_8.setBackground(Color.CYAN);
 		JPanel panel_9 = new JPanel();
 		panel_9.setBackground(Color.MAGENTA);
 		JPanel panel_10 = new JPanel();
 		panel_10.setBackground(Color.GREEN);
 		JPanel panel_11 = new JPanel();
-		panel_11.setBackground(SystemColor.textHighlight);
+		panel_11.setBackground(Color.WHITE);
 		JPanel panel_12 = new JPanel();
 		panel_12.setBackground(Color.YELLOW);
 		panel_8.setVisible(false);
@@ -295,6 +295,17 @@ public class WindowMain {
 		label_6.setBounds(0, 0, 200, 50);
 		panel_6.add(label_6);
 		JPanel panel_1 = new JPanel();
+		
+		JFormattedTextField player1Name = new JFormattedTextField();
+		player1Name.setVisible(false);
+		JFormattedTextField player2Name = new JFormattedTextField();
+		player2Name.setVisible(false);
+		JFormattedTextField player3Name = new JFormattedTextField();
+		player3Name.setVisible(false);
+		JFormattedTextField player4Name = new JFormattedTextField();
+		player4Name.setVisible(false);
+		JFormattedTextField player5Name = new JFormattedTextField();
+		player5Name.setVisible(false);
 		panel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -323,9 +334,32 @@ public class WindowMain {
 				gameState.gameStart();
 				System.out.println(gameState);
 				System.out.println(gameState.getAllPlayers().getPlayers().size());
-				if (gameState.getAllPlayers().getPlayers().size() > 0){
-					System.out.println(gameState.getAllPlayers().getPlayers().get(0).getName());
-					frmtdtxtfldPlayer.setText(gameState.getAllPlayers().getPlayers().get(0).getName());
+				if (gameState.getAllPlayers().getPlayers().size() > 0){	//Display the 
+					if (gameState.getAllPlayers().getPlayers().size() > 0) {
+						player1Name.setText(gameState.getAllPlayers().getPlayers().get(0).getName());
+						gameState.getAllPlayers().getPlayers().get(0).setPlayerTextName(player1Name);
+						player1Name.setVisible(true);
+					}
+					if (gameState.getAllPlayers().getPlayers().size() > 1){
+						player2Name.setText(gameState.getAllPlayers().getPlayers().get(1).getName());
+						gameState.getAllPlayers().getPlayers().get(1).setPlayerTextName(player2Name);
+						player2Name.setVisible(true);
+					}
+					if (gameState.getAllPlayers().getPlayers().size() > 2){
+						player3Name.setText(gameState.getAllPlayers().getPlayers().get(2).getName());
+						gameState.getAllPlayers().getPlayers().get(2).setPlayerTextName(player3Name);
+						player3Name.setVisible(true);
+					}
+					if (gameState.getAllPlayers().getPlayers().size() > 3){
+						player4Name.setText(gameState.getAllPlayers().getPlayers().get(3).getName());
+						gameState.getAllPlayers().getPlayers().get(3).setPlayerTextName(player4Name);
+						player4Name.setVisible(true);
+					}
+					if (gameState.getAllPlayers().getPlayers().size() > 4){
+						player5Name.setText(gameState.getAllPlayers().getPlayers().get(4).getName());
+						gameState.getAllPlayers().getPlayers().get(4).setPlayerTextName(player5Name);
+						player5Name.setVisible(true);
+					}
 				}
 			}
 		});
@@ -431,54 +465,96 @@ public class WindowMain {
 		JMenuItem mntmNewMenuItem = new JMenuItem("item1");
 		mnNewMenu.add(mntmNewMenuItem);
 		
-		JFormattedTextField frmtdtxtfldPlayer = new JFormattedTextField();
-		frmtdtxtfldPlayer.setBackground(Color.LIGHT_GRAY);
-		frmtdtxtfldPlayer.setForeground(Color.ORANGE);
-		frmtdtxtfldPlayer.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		
+		player1Name.setBackground(Color.LIGHT_GRAY);
+		player1Name.setForeground(Color.CYAN);
+		player1Name.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		player1Name.setHorizontalAlignment(SwingConstants.CENTER);
+		player1Name.setEditable(false);
+		player1Name.setBounds(100, 40, 175, 60);
+		map.add(player1Name);
 		
 		
-		frmtdtxtfldPlayer.setHorizontalAlignment(SwingConstants.CENTER);
-		frmtdtxtfldPlayer.setEditable(false);
-		frmtdtxtfldPlayer.setBounds(100, 40, 175, 60);
+		player2Name.setHorizontalAlignment(SwingConstants.CENTER);
+		player2Name.setForeground(Color.MAGENTA);
+		player2Name.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		player2Name.setEditable(false);
+		player2Name.setBackground(Color.LIGHT_GRAY);
+		player2Name.setBounds(300, 40, 175, 60);
+		map.add(player2Name);
 		
 		
-		map.add(frmtdtxtfldPlayer);
+		player3Name.setHorizontalAlignment(SwingConstants.CENTER);
+		player3Name.setForeground(Color.GREEN);
+		player3Name.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		player3Name.setEditable(false);
+		player3Name.setBackground(Color.LIGHT_GRAY);
+		player3Name.setBounds(500, 40, 175, 60);
+		map.add(player3Name);
 		
-		JFormattedTextField formattedTextField = new JFormattedTextField();
-		formattedTextField.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField.setForeground(Color.ORANGE);
-		formattedTextField.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		formattedTextField.setEditable(false);
-		formattedTextField.setBackground(Color.LIGHT_GRAY);
-		formattedTextField.setBounds(300, 40, 175, 60);
-		map.add(formattedTextField);
 		
-		JFormattedTextField formattedTextField_1 = new JFormattedTextField();
-		formattedTextField_1.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField_1.setForeground(Color.ORANGE);
-		formattedTextField_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		formattedTextField_1.setEditable(false);
-		formattedTextField_1.setBackground(Color.LIGHT_GRAY);
-		formattedTextField_1.setBounds(500, 40, 175, 60);
-		map.add(formattedTextField_1);
+		player4Name.setHorizontalAlignment(SwingConstants.CENTER);
+		player4Name.setForeground(Color.WHITE);
+		player4Name.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		player4Name.setEditable(false);
+		player4Name.setBackground(Color.LIGHT_GRAY);
+		player4Name.setBounds(700, 40, 175, 60);
+		map.add(player4Name);
 		
-		JFormattedTextField formattedTextField_2 = new JFormattedTextField();
-		formattedTextField_2.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField_2.setForeground(Color.ORANGE);
-		formattedTextField_2.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		formattedTextField_2.setEditable(false);
-		formattedTextField_2.setBackground(Color.LIGHT_GRAY);
-		formattedTextField_2.setBounds(700, 40, 175, 60);
-		map.add(formattedTextField_2);
 		
-		JFormattedTextField formattedTextField_3 = new JFormattedTextField();
-		formattedTextField_3.setHorizontalAlignment(SwingConstants.CENTER);
-		formattedTextField_3.setForeground(Color.ORANGE);
-		formattedTextField_3.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		formattedTextField_3.setEditable(false);
-		formattedTextField_3.setBackground(Color.LIGHT_GRAY);
-		formattedTextField_3.setBounds(900, 40, 175, 60);
-		map.add(formattedTextField_3);
+		player5Name.setHorizontalAlignment(SwingConstants.CENTER);
+		player5Name.setForeground(Color.YELLOW);
+		player5Name.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		player5Name.setEditable(false);
+		player5Name.setBackground(Color.LIGHT_GRAY);
+		player5Name.setBounds(900, 40, 175, 60);
+		map.add(player5Name);
+		
+		JPanel panel_14 = new JPanel();
+		panel_14.setBackground(Color.RED);
+		panel_14.setBounds(1009, 782, 170, 50);
+		map.add(panel_14);
+		panel_14.setLayout(null);
+		
+		JLabel lblNewLabel_1 = new JLabel("Next Stage");
+		lblNewLabel_1.setForeground(Color.WHITE);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		lblNewLabel_1.setBounds(0, 0, 170, 50);
+		panel_14.add(lblNewLabel_1);
+		
+		JPanel panel_15 = new JPanel();
+		panel_15.setBackground(Color.LIGHT_GRAY);
+		panel_15.setBounds(780, 765, 200, 31);
+		map.add(panel_15);
+		panel_15.setLayout(null);
+		
+		JLabel lblNewLabel_2 = new JLabel("Obtain Troops Stage");
+		lblNewLabel_2.setBounds(0, 0, 200, 31);
+		panel_15.add(lblNewLabel_2);
+		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JPanel panel_16 = new JPanel();
+		panel_16.setBackground(Color.LIGHT_GRAY);
+		panel_16.setBounds(780, 795, 200, 31);
+		map.add(panel_16);
+		panel_16.setLayout(null);
+		
+		JLabel lblAttackStage = new JLabel("Attack Stage");
+		lblAttackStage.setBounds(0, 0, 200, 31);
+		panel_16.add(lblAttackStage);
+		lblAttackStage.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+		JPanel panel_17 = new JPanel();
+		panel_17.setBackground(Color.LIGHT_GRAY);
+		panel_17.setBounds(780, 825, 200, 31);
+		map.add(panel_17);
+		panel_17.setLayout(null);
+		
+		JLabel lblMoveStaeg = new JLabel("Move Stage");
+		lblMoveStaeg.setBounds(0, 0, 200, 31);
+		panel_17.add(lblMoveStaeg);
+		lblMoveStaeg.setFont(new Font("Tahoma", Font.PLAIN, 20));
 
 	}
 }

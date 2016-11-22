@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.JFormattedTextField;
+
 import Army.Infantry;
 import Army.Troop;
 import World.Card;
@@ -17,6 +19,7 @@ public class Player {
 	private ArrayList<Country> countries = new ArrayList<Country>();
 	private ArrayList<Card> hand = new ArrayList<Card>();
 	private Group party;
+	private JFormattedTextField playerTextName;
 	private static Scanner sc = new Scanner(System.in);
 	
 	public Player(String name, String color) {
@@ -241,5 +244,13 @@ public class Player {
 
 	public void addCountry(Country c) {
 		this.countries.add(c);
+	}
+
+	public JFormattedTextField getPlayerTextName() {
+		return playerTextName;
+	}
+
+	public void setPlayerTextName(JFormattedTextField playerTextName) {
+		this.playerTextName = playerTextName;
 	}
 }
