@@ -24,6 +24,8 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
+
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
@@ -42,16 +44,18 @@ public class WindowMain {
 	private GameState gameState;
 	/**
 	 * Create the application.
+	 * @throws IOException 
 	 */
-	public WindowMain() {
+	public WindowMain() throws IOException {
 		gameState = new GameState();
 		initialize();
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @throws IOException 
 	 */
-	private void initialize() {
+	private void initialize() throws IOException {
 		frame1 = new JFrame();
 		frame1.setResizable(false);
 		gameState.playSound("music\\intro_music.wav");
@@ -501,6 +505,7 @@ public class WindowMain {
 		player4Name.setBounds(700, 40, 175, 60);
 		map.add(player4Name);
 		
+		new Game(map); 
 		
 		player5Name.setHorizontalAlignment(SwingConstants.CENTER);
 		player5Name.setForeground(Color.YELLOW);

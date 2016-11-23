@@ -12,7 +12,12 @@ public class driver extends JFrame{
 		setVisible(true);
 	}
 	public static void main(String[] args) {
-		WindowMain w = new WindowMain();
+		try {
+			WindowMain w = new WindowMain();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 }
