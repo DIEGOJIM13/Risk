@@ -316,7 +316,7 @@ public class WindowMain {
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Game");
 				gameState.stopCurrentSound();
-				gameState.playSound("music\\welcome.wav");
+				gameState.playSound("music\\introToMap.wav");
 				//gameState.playSound("music\\Risk.wav");
 				if(panel_8.isVisible()) {
 					Player p1 = new Player(textField.getText(), "Orange");
