@@ -110,7 +110,7 @@ public class WindowMain {
 		lblNewLabel.setBounds(0, 0, 50, 30);
 		panel_13.add(lblNewLabel);
 		panel.setBackground(new Color(255, 0, 0));
-		panel.setBounds(451, 677, 317, 77);
+		panel.setBounds(451, 177, 317, 77);
 		mainScreen.add(panel);
 		panel.setLayout(null);
 		
@@ -316,6 +316,8 @@ public class WindowMain {
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Game");
 				gameState.stopCurrentSound();
+				gameState.playSound("music\\welcome.wav");
+				//gameState.playSound("music\\Risk.wav");
 				if(panel_8.isVisible()) {
 					Player p1 = new Player(textField.getText(), "Orange");
 					gameState.addPlayer(p1);
@@ -372,7 +374,7 @@ public class WindowMain {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_1.setBackground(Color.RED);
-		panel_1.setBounds(300, 780, 200, 50);
+		panel_1.setBounds(300, 180, 200, 50);
 		playerSelect.add(panel_1);
 		
 		JLabel lblStartGame = new JLabel("Start Game!");
