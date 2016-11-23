@@ -451,7 +451,7 @@ public class WindowMain {
 		
 		
 		JLabel lblPlayer = new JLabel("");
-		lblPlayer.setIcon(new ImageIcon("C:\\Users\\Diego\\Documents\\eclipseWorkspace\\Risk\\GimpFiles\\Map.png"));
+		lblPlayer.setIcon(new ImageIcon("GimpFiles\\Map.png"));
 		lblPlayer.setBounds(0, 29, 1194, 831);
 		map.add(lblPlayer);
 		
