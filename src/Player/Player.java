@@ -10,7 +10,9 @@ import javax.swing.JFormattedTextField;
 import Army.Infantry;
 import Army.Troop;
 import World.Card;
+import World.Continent;
 import World.Country;
+import World.World;
 
 public class Player {
 	private String name;
@@ -116,11 +118,11 @@ public class Player {
 		}
 
 		System.out.println("Attacker rolled:");
-		for(int i = 0; i < 3; i++) {
+		for(int i = 0; i < Math.min(c1.getTroops().size(), 3); i++) {
 			System.out.print(attackRoll.get(i) + ", ");
 		}
 		System.out.println("\nDefender rolled:");
-		for(int i = 0; i < 2; i++) {
+		for(int i = 0; i < Math.min(c2.getTroops().size(), 2); i++) {
 			System.out.print(defendRoll.get(i) + ", ");
 		}
 		while(!defendRoll.isEmpty() && !attackRoll.isEmpty()) { // comparing the rolls
@@ -142,7 +144,7 @@ public class Player {
 			do {
 				System.out.println("Congrats, you conquered " + c2.getName() + ". How many troops would you like to put");
 				moveNum = sc.nextInt();				
-			}while(moveNum < c1.getTroops().size());
+			}while(moveNum > c1.getTroops().size());
 			c2.addInfrantry(moveNum); // adding the troops to the conquered country
 			c1.removeTroops(moveNum); // removing troops from the origin country
 		}
@@ -232,8 +234,26 @@ public class Player {
 	public void lose(){}
 	public int roll(){
 		return 0;}
+	
 	public int getBonus() {
-		return Math.floorDiv(this.countries.size(), 3);
+		int reward = Math.floorDiv(this.countries.size(), 3);
+		boolean owned = true;
+		World world = this.countries.get(0).getContinent().getWorld();
+		
+		for(Continent con : world.getContinents()) {
+			for(Country cou : con.getCountries()) {
+				if(cou.getPlayer() != this) {
+					owned = false;
+					break;
+				}
+			}
+			if(owned) {
+				reward += con.getBonus();
+			}
+		}
+
+		
+		return reward;
 	}
 	public void addInfrantry(int numTroops) {
 		for(int i = 0; i < numTroops; i++) {

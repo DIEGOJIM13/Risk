@@ -20,7 +20,7 @@ public class World {
 		 */
 		this.continents = new ArrayList<Continent>();
 		this.deck = new ArrayList<Card>();
-		Continent NorthAmerica = new Continent("Yellow", "North America", 5); // intializing NorthAmerica
+		Continent NorthAmerica = new Continent("Yellow", "North America", 5, this); // intializing NorthAmerica
 		Country Alaska = new Country("Alaska");
 		Country NorthWestTerritory = new Country("North West Territory");
 		Country Greenland = new Country("Greenland");
@@ -41,7 +41,7 @@ public class World {
 		NorthAmerica.addCountry(NorthWestTerritory);
 
 		
-		Continent SouthAmerica = new Continent("Brown", "South America", 2);
+		Continent SouthAmerica = new Continent("Brown", "South America", 2, this);
 		Country Venezuela = new Country("Venezuela");
 		Country Peru = new Country("Peru");
 		Country Argentina = new Country("Argentina");
@@ -51,7 +51,7 @@ public class World {
 		SouthAmerica.addCountry(Argentina);
 		SouthAmerica.addCountry(Brazil);
 		
-		Continent Africa = new Continent("Gray", "Africa", 5);
+		Continent Africa = new Continent("Gray", "Africa", 5, this);
 		Country NorthAfrica = new Country("North Africa");
 		Country Egypt = new Country("Egypt");
 		Country EastAfrica = new Country("East Africa");
@@ -66,7 +66,7 @@ public class World {
 		Africa.addCountry(SouthAfrica);
 		Africa.addCountry(Madagascar);
 		
-		Continent Europe = new Continent("Blue", "Europe", 5);
+		Continent Europe = new Continent("Blue", "Europe", 5, this);
 		Country Iceland = new Country("Iceland");
 		Country GreatBritain = new Country("Great Britain");
 		Country WesternEurope = new Country("Western Europe");
@@ -82,7 +82,7 @@ public class World {
 		Europe.addCountry(Ukraine);
 		Europe.addCountry(SouthernEurope);
 		
-		Continent Asia = new Continent("Green", "Asia", 7);
+		Continent Asia = new Continent("Green", "Asia", 7, this);
 		Country Ural = new Country("Ural");
 		Country Afghanistan = new Country("Afghanistan");
 		Country MiddleEast = new Country("Middle East");
@@ -108,7 +108,7 @@ public class World {
 		Asia.addCountry(Kamchatka);
 		Asia.addCountry(Japan);
 		
-		Continent Australia = new Continent("Europe", "Australia", 2);
+		Continent Australia = new Continent("Europe", "Australia", 2, this);
 		Country WesternAustralia = new Country("Western Australia");
 		Country Indonesia = new Country("Indonesia");
 		Country EasternAustralia = new Country("Eastern Australia");

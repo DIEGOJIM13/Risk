@@ -11,12 +11,12 @@ public class Continent {
 	private String name;
 	private World world;
 	
-	public Continent(String color, String name, int bonus){
+	public Continent(String color, String name, int bonus, World world){
 		this.countries = new ArrayList<Country>();
 		this.bonus = bonus;
 		this.color = color;
 		this.name = name;
-		//world = new World(); // why is this here?
+		this.world = world;
 	}
 	
 	public String toString() {
