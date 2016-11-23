@@ -461,7 +461,7 @@ public class WindowMain {
 		panel_12.add(textField_4);
 		
 		map.setLayout(null);
-		
+		new Game(map); 
 		
 		JLabel lblPlayer = new JLabel("");
 		lblPlayer.setIcon(new ImageIcon("GimpFiles\\Map.png"));
@@ -514,7 +514,7 @@ public class WindowMain {
 		player4Name.setBounds(700, 40, 175, 60);
 		map.add(player4Name);
 		
-		new Game(map); 
+		
 		
 		player5Name.setHorizontalAlignment(SwingConstants.CENTER);
 		player5Name.setForeground(Color.YELLOW);
