@@ -307,6 +307,7 @@ public class WindowMain {
 		
 		JFormattedTextField player1Name = new JFormattedTextField();
 		player1Name.setVisible(false);
+		player1Name.setBackground(Color.GRAY);
 		JFormattedTextField player2Name = new JFormattedTextField();
 		player2Name.setVisible(false);
 		JFormattedTextField player3Name = new JFormattedTextField();
@@ -348,6 +349,7 @@ public class WindowMain {
 						player1Name.setText(gameState.getAllPlayers().getPlayers().get(0).getName());
 						gameState.getAllPlayers().getPlayers().get(0).setPlayerTextName(player1Name);
 						player1Name.setVisible(true);
+						player1Name.setBackground(Color.GRAY);
 					}
 					if (gameState.getAllPlayers().getPlayers().size() > 1){
 						player2Name.setText(gameState.getAllPlayers().getPlayers().get(1).getName());
@@ -520,18 +522,53 @@ public class WindowMain {
 		player5Name.setBounds(900, 40, 175, 60);
 		map.add(player5Name);
 		
-		JPanel panel_14 = new JPanel();
-		panel_14.setBackground(Color.RED);
-		panel_14.setBounds(1009, 782, 170, 50);
-		map.add(panel_14);
-		panel_14.setLayout(null);
+		JPanel arrow0 = new JPanel();
+		JPanel arrow1 = new JPanel();
+		JPanel arrow2 = new JPanel();
+		
+		arrow0.setVisible(true);
+		arrow1.setVisible(false);
+		arrow2.setVisible(false);
+		
+		JPanel nextStage = new JPanel();
+		nextStage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				gameState.setCurrPhase((gameState.getCurrPhase() + 1) % 3);
+				if (gameState.getCurrPhase() == 0){
+					arrow0.setVisible(true);
+					arrow1.setVisible(false);
+					arrow2.setVisible(false);
+					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.LIGHT_GRAY);
+					gameState.setNextPlayer();
+					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.GRAY);
+				}
+				else if (gameState.getCurrPhase() == 1){
+					arrow0.setVisible(false);
+					arrow1.setVisible(true);
+					arrow2.setVisible(false);
+				}
+				else {
+					arrow0.setVisible(false);
+					arrow1.setVisible(false);
+					arrow2.setVisible(true);
+
+				}
+				
+				
+			}
+		});
+		nextStage.setBackground(Color.RED);
+		nextStage.setBounds(1009, 785, 170, 50);
+		map.add(nextStage);
+		nextStage.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("Next Stage");
 		lblNewLabel_1.setForeground(Color.WHITE);
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		lblNewLabel_1.setBounds(0, 0, 170, 50);
-		panel_14.add(lblNewLabel_1);
+		nextStage.add(lblNewLabel_1);
 		
 		JPanel panel_15 = new JPanel();
 		panel_15.setBackground(Color.LIGHT_GRAY);
@@ -565,6 +602,40 @@ public class WindowMain {
 		lblMoveStaeg.setBounds(0, 0, 200, 31);
 		panel_17.add(lblMoveStaeg);
 		lblMoveStaeg.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		
+
+		
+		arrow0.setBackground(Color.LIGHT_GRAY);
+		arrow0.setBounds(740, 765, 30, 30);
+		map.add(arrow0);
+		arrow0.setLayout(null);
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setIcon(new ImageIcon("GimpFiles\\arrow.png"));
+		lblNewLabel_3.setBounds(0, 0, 30, 30);
+		arrow0.add(lblNewLabel_3);
+		
+		
+		arrow1.setBounds(740, 795, 30, 30);
+		map.add(arrow1);
+		arrow1.setLayout(null);
+		arrow1.setBackground(Color.LIGHT_GRAY);
+		
+		JLabel label_7 = new JLabel("");
+		label_7.setIcon(new ImageIcon("GimpFiles\\arrow.png"));
+		label_7.setBounds(0, 0, 30, 30);
+		arrow1.add(label_7);
+		
+		
+		arrow2.setLayout(null);
+		arrow2.setBackground(Color.LIGHT_GRAY);
+		arrow2.setBounds(740, 825, 30, 30);
+		map.add(arrow2);
+		
+		JLabel label_8 = new JLabel("");
+		label_8.setIcon(new ImageIcon("GimpFiles\\arrow.png"));
+		label_8.setBounds(0, 0, 30, 30);
+		arrow2.add(label_8);
 
 	}
 }

@@ -64,6 +64,10 @@ public class GameState {
 		this.allPlayers.addPlayer(p1);
 	}
 	
+	public void setCurrPhase(int p) {
+		this.currPhase = p;
+	}
+	
 	public Player checkWinner() {
 		boolean won = false;
 		if (this.allPlayers.getPlayers().size() == 1) { // if there is only one player they already win
@@ -76,6 +80,11 @@ public class GameState {
 			}
 		}
 		return null;
+	}
+	
+	public void setNextPlayer() {
+		int currPlayerIndex = this.getAllPlayers().getPlayers().indexOf(this.currPlayer);
+		this.currPlayer = this.getAllPlayers().getPlayers().get((currPlayerIndex + 1) % this.getAllPlayers().getPlayers().size());
 	}
 	
 	public void playSound(String filename) {
@@ -100,6 +109,7 @@ public class GameState {
 	public void stopCurrentSound() {
 		this.music.close();
 	}
+	
 	
 	
 }
