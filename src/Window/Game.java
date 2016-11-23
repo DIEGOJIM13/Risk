@@ -240,8 +240,7 @@ public class Game {
 		MiddleEast.b.setBounds(x + 527, y + 222, 160, 153);
 		frame.add(MiddleEast.b);
 		
-		
-		
+				
 		Afghanistan.b.setBounds(x + 607, y + 121, 121, 120);
 		frame.add(Afghanistan.b);
 		
@@ -300,9 +299,7 @@ public class Game {
 		
 		NewGuinea.b.setBounds(x + 859, y + 365, 98, 72);
 		frame.add(NewGuinea.b);
-		
-		
-		
+				
 	}
 	
 	public JPanel getFrame(){

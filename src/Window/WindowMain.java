@@ -31,6 +31,7 @@ import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import java.awt.SystemColor;
 import javax.swing.JTextArea;
+import java.awt.Scrollbar;
 
 public class WindowMain {
 
@@ -57,7 +58,7 @@ public class WindowMain {
 	 */
 	private void initialize() throws IOException {
 		frame1 = new JFrame();
-		frame1.setResizable(false);
+		frame1.setResizable(true);
 		gameState.playSound("music\\intro_music.wav");
 		frame1.setTitle("Risk - The Game of Global Domination");
 		frame1.getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -125,6 +126,10 @@ public class WindowMain {
 		label.setBounds(0, 0, 1194, 860);
 		mainScreen.add(label);
 		label.setIcon(new ImageIcon("GimpFiles\\StartGame.png")); //This should work for you, let me know if it does not. -Diego
+		
+		Scrollbar scrollbar = new Scrollbar();
+		scrollbar.setBounds(1168, 102, 26, 200);
+		mainScreen.add(scrollbar);
 		playerSelect.setBackground(Color.LIGHT_GRAY);
 		//frame1.getContentPane().add(playerSelect, "UnknownPlyer");
 		playerSelect.setLayout(null);
