@@ -241,6 +241,7 @@ public class Player {
 		World world = this.countries.get(0).getContinent().getWorld();
 		
 		for(Continent con : world.getContinents()) {
+			owned = true;
 			for(Country cou : con.getCountries()) {
 				if(cou.getPlayer() != this) {
 					owned = false;
