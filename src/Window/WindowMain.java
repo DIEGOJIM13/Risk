@@ -633,6 +633,37 @@ public class WindowMain {
 		label_8.setIcon(new ImageIcon("GimpFiles\\arrow.png"));
 		label_8.setBounds(0, 0, 30, 30);
 		arrow2.add(label_8);
+		
+		JPanel resultsScreen = new JPanel();
+		resultsScreen.setBackground(Color.LIGHT_GRAY);
+		cards.add(resultsScreen, "name_263613888585938");
+		resultsScreen.setLayout(null);
+		
+		JPanel panel_14 = new JPanel();
+		panel_14.setBackground(Color.RED);
+		panel_14.setBounds(300, 100, 600, 150);
+		resultsScreen.add(panel_14);
+		panel_14.setLayout(null);
+		
+		JLabel lblPlayername = new JLabel("playerName");
+		lblPlayername.setForeground(Color.WHITE);
+		lblPlayername.setBounds(0, 0, 600, 150);
+		panel_14.add(lblPlayername);
+		lblPlayername.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		lblPlayername.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel panel_18 = new JPanel();
+		panel_18.setBackground(Color.RED);
+		panel_18.setBounds(300, 280, 600, 75);
+		resultsScreen.add(panel_18);
+		panel_18.setLayout(null);
+		
+		JLabel lblHasWonThe = new JLabel("Has won the game!");
+		lblHasWonThe.setForeground(Color.WHITE);
+		lblHasWonThe.setBounds(0, 0, 600, 75);
+		panel_18.add(lblHasWonThe);
+		lblHasWonThe.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		lblHasWonThe.setHorizontalAlignment(SwingConstants.CENTER);
 
 	}
 }
