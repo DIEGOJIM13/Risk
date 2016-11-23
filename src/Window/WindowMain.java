@@ -111,7 +111,7 @@ public class WindowMain {
 		lblNewLabel.setBounds(0, 0, 50, 30);
 		panel_13.add(lblNewLabel);
 		panel.setBackground(new Color(255, 0, 0));
-		panel.setBounds(451, 677, 317, 77);
+		panel.setBounds(451, 177, 317, 77);
 		mainScreen.add(panel);
 		panel.setLayout(null);
 		
@@ -321,6 +321,8 @@ public class WindowMain {
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Game");
 				gameState.stopCurrentSound();
+				gameState.playSound("music\\introToMap.wav");
+				//gameState.playSound("music\\Risk.wav");
 				if(panel_8.isVisible()) {
 					Player p1 = new Player(textField.getText(), "Orange");
 					gameState.addPlayer(p1);
@@ -377,7 +379,7 @@ public class WindowMain {
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_1.setBackground(Color.RED);
-		panel_1.setBounds(300, 780, 200, 50);
+		panel_1.setBounds(300, 180, 200, 50);
 		playerSelect.add(panel_1);
 		
 		JLabel lblStartGame = new JLabel("Start Game!");
@@ -636,6 +638,37 @@ public class WindowMain {
 		label_8.setIcon(new ImageIcon("GimpFiles\\arrow.png"));
 		label_8.setBounds(0, 0, 30, 30);
 		arrow2.add(label_8);
+		
+		JPanel resultsScreen = new JPanel();
+		resultsScreen.setBackground(Color.LIGHT_GRAY);
+		cards.add(resultsScreen, "name_263613888585938");
+		resultsScreen.setLayout(null);
+		
+		JPanel panel_14 = new JPanel();
+		panel_14.setBackground(Color.RED);
+		panel_14.setBounds(300, 100, 600, 150);
+		resultsScreen.add(panel_14);
+		panel_14.setLayout(null);
+		
+		JLabel lblPlayername = new JLabel("playerName");
+		lblPlayername.setForeground(Color.WHITE);
+		lblPlayername.setBounds(0, 0, 600, 150);
+		panel_14.add(lblPlayername);
+		lblPlayername.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		lblPlayername.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JPanel panel_18 = new JPanel();
+		panel_18.setBackground(Color.RED);
+		panel_18.setBounds(300, 280, 600, 75);
+		resultsScreen.add(panel_18);
+		panel_18.setLayout(null);
+		
+		JLabel lblHasWonThe = new JLabel("Has won the game!");
+		lblHasWonThe.setForeground(Color.WHITE);
+		lblHasWonThe.setBounds(0, 0, 600, 75);
+		panel_18.add(lblHasWonThe);
+		lblHasWonThe.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		lblHasWonThe.setHorizontalAlignment(SwingConstants.CENTER);
 
 	}
 }
