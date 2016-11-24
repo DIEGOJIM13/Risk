@@ -58,7 +58,7 @@ public class WindowMain {
 	 */
 	private void initialize() throws IOException {
 		frame1 = new JFrame();
-		frame1.setResizable(true);
+		frame1.setResizable(false);
 		gameState.playSound("music\\intro_music.wav");
 		frame1.setTitle("Risk - The Game of Global Domination");
 		frame1.getContentPane().setBackground(Color.LIGHT_GRAY);
@@ -461,7 +461,7 @@ public class WindowMain {
 		panel_12.add(textField_4);
 		
 		map.setLayout(null);
-		new Game(map); 
+		new Game(map, gameState.getWorld()); 
 		
 		JLabel lblPlayer = new JLabel("");
 		lblPlayer.setIcon(new ImageIcon("GimpFiles\\Map.png"));

@@ -18,13 +18,17 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
+import World.Country;
+
 public class CountryButton{
 	public String name;
 	public BufferedImage image;
 	public JButton b;
+	public Country country;
 	
-	public CountryButton(BufferedImage i, String name){
+	public CountryButton(BufferedImage i, String name, Country c){
 		image = i;
+		country = c;
 		this.name = name;
 		b = new JButton(new ImageIcon(image)) {
 	        @Override
@@ -54,7 +58,7 @@ public class CountryButton{
 	    b.addActionListener(new ActionListener(){
 	    	@Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(b, "You clicked on the " + name + " button");
+                JOptionPane.showMessageDialog(b, "You clicked on the " + country.getName() + " button");
             }
 	    });
 	}
