@@ -1,5 +1,6 @@
 package Player;
 
+import java.awt.Color;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
@@ -16,7 +17,7 @@ import World.World;
 
 public class Player {
 	private String name;
-	private String color;
+	private Color color;
 	private ArrayList<Troop> numTroops = new ArrayList<Troop>();
 	private ArrayList<Country> countries = new ArrayList<Country>();
 	private ArrayList<Card> hand = new ArrayList<Card>();
@@ -24,7 +25,7 @@ public class Player {
 	private JFormattedTextField playerTextName;
 	private static Scanner sc = new Scanner(System.in);
 	
-	public Player(String name, String color) {
+	public Player(String name, Color color) {
 		this.name = name;
 		this.color = color;
 	}
@@ -35,10 +36,10 @@ public class Player {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getColor() {
+	public Color getColor() {
 		return color;
 	}
-	public void setColor(String color) {
+	public void setColor(Color color) {
 		this.color = color;
 	}
 	public ArrayList<Troop> getNumTroops() {

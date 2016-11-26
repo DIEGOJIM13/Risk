@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import Army.*;
 import Player.Player;
+import Window.CountryButton;
 
 public class Country {
 	private Continent continent;
@@ -13,6 +14,7 @@ public class Country {
 	private int xLoc;
 	private int yLoc;
 	private ArrayList<Country> borderingCountries;
+	private CountryButton button;
 	
 	public Country(String name){
 		this.continent = null; // will set this in the addCountry() method
@@ -22,6 +24,7 @@ public class Country {
 		this.xLoc = 0;
 		this.yLoc = 0;
 		this.borderingCountries = new ArrayList<Country>();
+		this.button = null;
 	}
 	public String toString() {
 		String retString = "Country Name: " + this.name + "\n";
@@ -88,6 +91,12 @@ public class Country {
 	}
 	public ArrayList<Country> getBorderingCountries(){
 		return borderingCountries;
+	}
+	public void setButton(CountryButton b) {
+		this.button = b;
+	}
+	public CountryButton getButton() {
+		return this.button;
 	}
 	public void checkAdjacent(Country c1){}
 	public void addTroop(int num){}

@@ -181,172 +181,241 @@ public class Game {
 		int x = 9;
 		int y = 165;
 		
-		Alaska.b.setBounds(x, y, 101, 100);
-		frame.add(Alaska.b);
-		
-		
-		NWTerritory.b.setBounds(x + 75, y - 18, 175, 83);
+		Alaska.setDoubleBounds(x, y, 101, 100); // will set the bounds for both the JButon and JLabel inside CountryButton
+		frame.add(Alaska.getLabel()); // adding the label to the frame (needs to be first to be able the button)
+		frame.add(Alaska.b); // adding the button to the frame
+
+		NWTerritory.setDoubleBounds(x + 75, y - 18, 175, 83);
+		frame.add(NWTerritory.getLabel());
 		frame.add(NWTerritory.b);
 		
-		
-		Quebec.b.setBounds(x + 231, y + 50, 87, 118);
+		Quebec.setDoubleBounds(x + 231, y + 50, 87, 118);
+		frame.add(Quebec.getLabel());
 		frame.add(Quebec.b);
 		
-		
-		Alberta.b.setBounds(x + 83, y + 58, 96, 71);
+		Alberta.setDoubleBounds(x + 83, y + 58, 96, 71);
+		frame.add(Alberta.getLabel());
 		frame.add(Alberta.b);
 		
-		
-		Ontario.b.setBounds(x + 166, y + 57, 75, 90);
+		Ontario.setDoubleBounds(x + 166, y + 57, 75, 90);
+		frame.add(Ontario.getLabel());
 		frame.add(Ontario.b);
 		
-		
-		EasternUS.b.setBounds(x + 151, y + 125, 127, 118);
+		EasternUS.setDoubleBounds(x + 151, y + 125, 127, 118);
+		frame.add(EasternUS.getLabel());
 		frame.add(EasternUS.b);
 		
 		
-		WesternUS.b.setBounds(x + 90, y + 123, 101, 100);
+		WesternUS.setDoubleBounds(x + 90, y + 123, 101, 100);
+		frame.add(WesternUS.getLabel());
 		frame.add(WesternUS.b);
 		
 		
-		CenAm.b.setBounds(x + 93, y + 197, 107, 118);
+		CenAm.setDoubleBounds(x + 93, y + 197, 107, 118);
+		frame.add(CenAm.getLabel());
 		frame.add(CenAm.b);
 		
 		
-		Venezuela.b.setBounds(x + 170, y + 278, 127, 71);
+		Venezuela.setDoubleBounds(x + 170, y + 278, 127, 71);
+		frame.add(Venezuela.getLabel());
 		frame.add(Venezuela.b);
 		
 		
-		Argentina.b.setBounds(x + 202, y + 408, 94, 175);
+		Argentina.setDoubleBounds(x + 202, y + 408, 94, 175);
+		frame.add(Argentina.getLabel());
 		frame.add(Argentina.b);
 		
 		
-		Brazil.b.setBounds(x + 191, y + 310, 188, 168);
+		
+		Brazil.setDoubleBounds(x + 191, y + 310, 188, 168);
+		frame.add(Brazil.getLabel());
 		frame.add(Brazil.b);
 		
 		
-		Peru.b.setBounds(x + 158, y + 322, 128, 128);
+		
+		Peru.setDoubleBounds(x + 158, y + 322, 128, 128);
+		frame.add(Peru.getLabel());
 		frame.add(Peru.b);
 		
 		
-		NorthAfrica.b.setBounds(x + 371, y + 269, 168, 163);
+		
+		NorthAfrica.setDoubleBounds(x + 371, y + 269, 168, 163);
+		frame.add(NorthAfrica.getLabel());
 		frame.add(NorthAfrica.b);
 		
 		
-		Congo.b.setBounds(x + 481, y + 384, 101, 100);
+		
+		Congo.setDoubleBounds(x + 481, y + 384, 101, 100);
+		frame.add(Congo.getLabel());
 		frame.add(Congo.b);
 		
 		
-		SouthAfrica.b.setBounds(x + 491, y + 450, 116, 132);
+		
+		SouthAfrica.setDoubleBounds(x + 491, y + 450, 116, 132);
+		frame.add(SouthAfrica.getLabel());
 		frame.add(SouthAfrica.b);
 		
 		
-		EastAfrica.b.setBounds(x + 530, y + 338, 116, 160);
+		
+		EastAfrica.setDoubleBounds(x + 530, y + 338, 116, 160);
+		frame.add(EastAfrica.getLabel());
 		frame.add(EastAfrica.b);
 		
 		
-		Egypt.b.setBounds(x + 485, y + 276, 100, 83);
+		
+		Egypt.setDoubleBounds(x + 485, y + 276, 100, 83);
+		frame.add(Egypt.getLabel());
 		frame.add(Egypt.b);
 		
 		
-		Madagascar.b.setBounds(x + 585, y + 455, 78, 110);
+		
+		Madagascar.setDoubleBounds(x + 585, y + 455, 78, 110);
+		frame.add(Madagascar.getLabel());
 		frame.add(Madagascar.b);
 		
 		
-		Greenland.b.setBounds(x + 200, y - 50, 198, 133);
+		
+		Greenland.setDoubleBounds(x + 200, y - 50, 198, 133);
+		frame.add(Greenland.getLabel());
 		frame.add(Greenland.b);
 		
 		
-		Iceland.b.setBounds(x + 368, y + 42, 87, 81);
+		
+		Iceland.setDoubleBounds(x + 368, y + 42, 87, 81);
+		frame.add(Iceland.getLabel());
 		frame.add(Iceland.b);
 		
 		
-		Britain.b.setBounds(x + 339, y + 92, 116, 96);
+		
+		Britain.setDoubleBounds(x + 339, y + 92, 116, 96);
+		frame.add(Britain.getLabel());
 		frame.add(Britain.b);
 		
 		
-		Scandinavia.b.setBounds(x + 429, y + 12, 120, 112);
+		
+		Scandinavia.setDoubleBounds(x + 429, y + 12, 120, 112);
+		frame.add(Scandinavia.getLabel());
 		frame.add(Scandinavia.b);
 		
 		
-		Ukraine.b.setBounds(x + 512, y + 12, 158, 224);
+		
+		Ukraine.setDoubleBounds(x + 512, y + 12, 158, 224);
+		frame.add(Ukraine.getLabel());
 		frame.add(Ukraine.b);
 		
 		
-		WesternEurope.b.setBounds(x + 373, y + 172, 90, 116);
+		
+		WesternEurope.setDoubleBounds(x + 373, y + 172, 90, 116);
+		frame.add(WesternEurope.getLabel());
 		frame.add(WesternEurope.b);
 		
 		
-		NorthernEurope.b.setBounds(x + 424, y + 107, 118, 94);
+		
+		NorthernEurope.setDoubleBounds(x + 424, y + 107, 118, 94);
+		frame.add(NorthernEurope.getLabel());
 		frame.add(NorthernEurope.b);
 		
 		
-		SouthernEurope.b.setBounds(x + 449, y + 175, 100, 114);
+		
+		SouthernEurope.setDoubleBounds(x + 449, y + 175, 100, 114);
+		frame.add(SouthernEurope.getLabel());
 		frame.add(SouthernEurope.b);
 		
 		
-		MiddleEast.b.setBounds(x + 527, y + 222, 160, 153);
+		
+		MiddleEast.setDoubleBounds(x + 527, y + 222, 160, 153);
+		frame.add(MiddleEast.getLabel());
 		frame.add(MiddleEast.b);
 		
+		
 				
-		Afghanistan.b.setBounds(x + 607, y + 121, 121, 120);
+		Afghanistan.setDoubleBounds(x + 607, y + 121, 121, 120);
+		frame.add(Afghanistan.getLabel());
 		frame.add(Afghanistan.b);
 		
 		
-		India.b.setBounds(x + 666, y + 214, 122, 172);
+		
+		India.setDoubleBounds(x + 666, y + 214, 122, 172);
+		frame.add(India.getLabel());
 		frame.add(India.b);
 		
 		
-		Siam.b.setBounds(x + 770, y + 268, 82, 104);
+		
+		Siam.setDoubleBounds(x + 770, y + 268, 82, 104);
+		frame.add(Siam.getLabel());
 		frame.add(Siam.b);
 		
 		
-		China.b.setBounds(x + 705, y + 144, 172, 154);
+		
+		China.setDoubleBounds(x + 705, y + 144, 172, 154);
+		frame.add(China.getLabel());
 		frame.add(China.b);
 		
 		
-		Mongolia.b.setBounds(x + 764, y + 111, 144, 96);
+		
+		Mongolia.setDoubleBounds(x + 764, y + 111, 144, 96);
+		frame.add(Mongolia.getLabel());
 		frame.add(Mongolia.b);
 		
 		
-		Ural.b.setBounds(x + 653, y - 11, 86, 178);
+		
+		Ural.setDoubleBounds(x + 653, y - 11, 86, 178);
+		frame.add(Ural.getLabel());
 		frame.add(Ural.b);
 		
 		
-		Siberia.b.setBounds(x + 676, y - 44, 124, 210);
+		
+		Siberia.setDoubleBounds(x + 676, y - 44, 124, 210);
+		frame.add(Siberia.getLabel());
 		frame.add(Siberia.b);
 		
 		
-		Irkutsk.b.setBounds(x + 756, y + 54, 112, 86);
+		
+		Irkutsk.setDoubleBounds(x + 756, y + 54, 112, 86);
+		frame.add(Irkutsk.getLabel());
 		frame.add(Irkutsk.b);
 		
 		
-		Yakutsk.b.setBounds(x + 772, y - 26, 104, 94);
+		
+		Yakutsk.setDoubleBounds(x + 772, y - 26, 104, 94);
+		frame.add(Yakutsk.getLabel());
 		frame.add(Yakutsk.b);
 		
 		
-		Kamchatka.b.setBounds(x + 829, y - 14, 302, 172);
+		
+		Kamchatka.setDoubleBounds(x + 829, y - 14, 302, 172);
+		frame.add(Kamchatka.getLabel());
 		frame.add(Kamchatka.b);
 		
 		
-		Japan.b.setBounds(x + 883, y + 108, 68, 118);
+		Japan.setDoubleBounds(x + 883, y + 108, 68, 118);
+		frame.add(Japan.getLabel());
 		frame.add(Japan.b);
 		
 		
-		WesternAustralia.b.setBounds(x + 816, y + 414, 122, 158);
+		
+		WesternAustralia.setDoubleBounds(x + 816, y + 414, 122, 158);
+		frame.add(WesternAustralia.getLabel());
 		frame.add(WesternAustralia.b);
 		
 		
-		EasternAustralia.b.setBounds(x + 890, y + 407, 104, 178);
+		
+		EasternAustralia.setDoubleBounds(x + 890, y + 407, 104, 178);
+		frame.add(EasternAustralia.getLabel());
 		frame.add(EasternAustralia.b);
 		
 		
-		Indonesia.b.setBounds(x + 763, y + 358, 116, 110);
+		
+		Indonesia.setDoubleBounds(x + 763, y + 358, 116, 110);
+		frame.add(Indonesia.getLabel());
 		frame.add(Indonesia.b);
 		
 		
-		NewGuinea.b.setBounds(x + 859, y + 365, 98, 72);
+		
+		NewGuinea.setDoubleBounds(x + 859, y + 365, 98, 72);
+		frame.add(NewGuinea.getLabel());
 		frame.add(NewGuinea.b);
+		
 				
 	}
 	

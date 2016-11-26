@@ -1,3 +1,5 @@
+import java.awt.Color;
+
 import Player.*;
 import World.*;
 
@@ -9,9 +11,9 @@ public class driver {
 		 * and goes through the whole process of a turn. These turns continue until everyone quits but one player, or the world has been conquered.
 		 */
 		GameState state = new GameState(); // creating the game (basically the game without the GUI)
-		Player p1 = new Player("Eddie", "Blue"); // creating the players playing
-		Player p2 = new Player("Hugo", "Green");
-		Player p3 = new Player("Diego", "Red");
+		Player p1 = new Player("Eddie", Color.BLUE); // creating the players playing
+		Player p2 = new Player("Hugo", Color.GREEN);
+		Player p3 = new Player("Diego", Color.RED);
 		state.addPlayer(p1); // adding the players to the game
 		state.addPlayer(p2);
 		state.addPlayer(p3);

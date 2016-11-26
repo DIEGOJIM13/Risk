@@ -324,23 +324,23 @@ public class WindowMain {
 				gameState.playSound("music\\introToMap.wav");
 				//gameState.playSound("music\\Risk.wav");
 				if(panel_8.isVisible()) {
-					Player p1 = new Player(textField.getText(), "Orange");
+					Player p1 = new Player(textField.getText(), Color.cyan);
 					gameState.addPlayer(p1);
 				}
 				if(panel_9.isVisible()) {
-					Player p2 = new Player(textField_1.getText(), "Magenta");
+					Player p2 = new Player(textField_1.getText(), Color.magenta);
 					gameState.addPlayer(p2);
 				}
 				if(panel_10.isVisible()) {
-					Player p3 = new Player(textField_2.getText(), "Green");
+					Player p3 = new Player(textField_2.getText(), Color.green);
 					gameState.addPlayer(p3);
 				}
 				if(panel_11.isVisible()) {
-					Player p4 = new Player(textField_3.getText(), "Blue");
+					Player p4 = new Player(textField_3.getText(), Color.white);
 					gameState.addPlayer(p4);
 				}
 				if(panel_12.isVisible()) {
-					Player p5 = new Player(textField_4.getText(), "Yellow");
+					Player p5 = new Player(textField_4.getText(), Color.yellow);
 					gameState.addPlayer(p5);
 				}
 				gameState.gameStart();

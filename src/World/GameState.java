@@ -38,6 +38,15 @@ public class GameState {
 		this.currPhase = 0;
 		this.currPlayer = this.allPlayers.getPlayers().get(0);
 		this.world.startGame(this.allPlayers); // will deal out the cards and initialize countries
+		this.updateCountryLabels();
+	}
+	
+	public void updateCountryLabels() {
+		for(Continent con : this.world.getContinents()) {
+			for(Country cou : con.getCountries()) {
+				cou.getButton().updateLabel(cou.getPlayer());
+			}
+		}
 	}
 	
 	public Player getCurrPlayer() {

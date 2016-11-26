@@ -1,6 +1,7 @@
 package Window;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
@@ -15,9 +16,12 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 
+import Player.Player;
 import World.Country;
 
 public class CountryButton{
@@ -25,12 +29,20 @@ public class CountryButton{
 	public BufferedImage image;
 	public JButton b;
 	public Country country;
+	private JLabel label;
 	
 	public CountryButton(BufferedImage i, String name, Country c){
-		image = i;
-		country = c;
+		this.image = i;
+		this.country = c;
+		c.setButton(this);
 		this.name = name;
-		b = new JButton(new ImageIcon(image)) {
+		
+		this.label = new JLabel(1 + ""); // defining the label that will say the number of troops
+		this.label.setHorizontalAlignment(SwingConstants.CENTER);
+		this.label.setForeground(Color.RED);
+		this.label.setFont(new Font("Dialog", Font.PLAIN, 20));
+		
+		this.b = new JButton(new ImageIcon(image)) {
 	        @Override
 	        public boolean contains(int x, int y) {
 	            Rectangle viewRect = getBounds();
@@ -61,6 +73,21 @@ public class CountryButton{
                 JOptionPane.showMessageDialog(b, "You clicked on the " + country.getName() + " button");
             }
 	    });
+	}
+	
+	
+	public void setDoubleBounds(int x, int y, int w, int h) {
+		this.b.setBounds(x, y, w, h);
+		this.label.setBounds(x, y, w, h);
+	}
+	
+	public JLabel getLabel()  {
+		return this.label;
+	}
+	
+	public void updateLabel(Player p) {
+		this.label.setText("" + this.country.getTroops().size());
+		this.label.setForeground(p.getColor());
 	}
 	
 	
