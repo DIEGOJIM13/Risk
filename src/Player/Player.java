@@ -114,7 +114,7 @@ public class Player {
 		ArrayList<Integer> attackRoll = new ArrayList<Integer>(); // will contain all of the attacker's rolls
 		ArrayList<Integer> defendRoll = new ArrayList<Integer>(); // will contain all of the defender's roll
 
-		for(int i = 0; i < Math.min(c1.getTroops().size(), 3); i++) { // populating the attacker's rolls
+		for(int i = 0; i < Math.min(c1.getTroops().size() - 1, 3); i++) { // populating the attacker's rolls
 			Integer tempInt = new Integer(rand.nextInt(6) + 1);
 			attackRoll.add(tempInt);
 		}
@@ -123,7 +123,7 @@ public class Player {
 			defendRoll.add(tempInt);
 		}
 		String diceString = "Attacker rolled:\n";
-		for(int i = 0; i < Math.min(c1.getTroops().size(), 3); i++) {
+		for(int i = 0; i < attackRoll.size(); i++) {
 			if(i !=  Math.min(c1.getTroops().size(), 3) - 1) {
 				diceString += attackRoll.get(i) + ", ";
 			}
@@ -132,7 +132,7 @@ public class Player {
 			}
 		}
 		diceString += "\nDefender rolled:\n";
-		for(int i = 0; i < Math.min(c2.getTroops().size(), 2); i++) {
+		for(int i = 0; i < defendRoll.size(); i++) {
 			if(i != Math.min(c2.getTroops().size(), 2) - 1) {
 				diceString += defendRoll.get(i) + ", ";				
 			}
@@ -158,19 +158,22 @@ public class Player {
 		if(c2.getTroops().size() == 0) { // if the defending country was taken over
 			c2.setPlayer(this);
 			int moveNum = 0;
-			int result;
-			do {
-				JPanel numPanel = new JPanel();
-				numPanel.add(new JLabel("Congrats you conquered " + c2.getName() + " with " + c1.getName() + ". How many troops would you like to add?"));
-				DefaultComboBoxModel<String> selection = new DefaultComboBoxModel<String>();
-				for (int i = 1; i < c1.getTroops().size(); i++){
-					selection.addElement(Integer.toString(i));
-				}
-				JComboBox<String> comboBox = new JComboBox<String>(selection);
-				numPanel.add(comboBox);
-				result = JOptionPane.showConfirmDialog(null, numPanel, "Number of Troops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
-				moveNum = Integer.parseInt(comboBox.getSelectedItem().toString());				
-			}while(result == JOptionPane.CANCEL_OPTION);
+			JPanel numPanel = new JPanel();
+			numPanel.add(new JLabel("Congrats you conquered " + c2.getName() + " with " + c1.getName() + ". How many troops would you like to add?"));
+			DefaultComboBoxModel<String> selection = new DefaultComboBoxModel<String>();
+			for (int i = 1; i < c1.getTroops().size(); i++){
+				selection.addElement(Integer.toString(i));
+			}
+			JComboBox<String> comboBox = new JComboBox<String>(selection);
+			numPanel.add(comboBox);
+			int result = JOptionPane.showConfirmDialog(null, numPanel, "Number of Troops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			if(result == JOptionPane.CANCEL_OPTION) {
+				moveNum = 1; // if they cancel it will just move one
+			}
+			else {
+				moveNum = Integer.parseInt(comboBox.getSelectedItem().toString());
+			}
+			moveNum = Integer.parseInt(comboBox.getSelectedItem().toString());
 			c2.addInfrantry(moveNum); // adding the troops to the conquered country
 			c1.removeTroops(moveNum); // removing troops from the origin country
 		}
@@ -266,14 +269,17 @@ public class Player {
 		boolean owned = true;
 		World world = this.countries.get(0).getContinent().getWorld();
 		
-		for(Continent con : world.getContinents()) {
+		for(Continent con : this.countries.get(0).getContinent().getWorld().getContinents()) {
 			owned = true;
 			for(Country cou : con.getCountries()) {
 				if(cou.getPlayer() != this) {
 					owned = false;
-					break;
+					//break;
 				}
+				System.out.println(cou.getPlayer().getName());
+				System.out.println(this.name);
 			}
+			System.out.println(con.getName());
 			if(owned) {
 				reward += con.getBonus();
 			}

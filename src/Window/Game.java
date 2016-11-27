@@ -108,7 +108,7 @@ public class Game {
 		CountryButton Britain = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\Britain.png")), "Britain",
 									world.getContinents().get(3).getCountries().get(1));
 		CountryButton CenAm = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\CenAm.png")), "Central America",
-									world.getContinents().get(0).getCountries().get(6));
+									world.getContinents().get(0).getCountries().get(7));
 		CountryButton China = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\China.png")), "China",
 									world.getContinents().get(4).getCountries().get(5));
 		CountryButton Congo = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\Congo.png")), "Congo",
@@ -118,7 +118,7 @@ public class Game {
 		CountryButton EasternAustralia = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\EasternAustralia.png")), "EasternAustralia",
 									world.getContinents().get(5).getCountries().get(2));
 		CountryButton EasternUS = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\EasternUnitedStates.png")), "Eastern US",
-									world.getContinents().get(0).getCountries().get(7));
+									world.getContinents().get(0).getCountries().get(6));
 		CountryButton Egypt = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\Egypt.png")), "Egypt",
 									world.getContinents().get(2).getCountries().get(1));
 		CountryButton Greenland = new CountryButton(ImageIO.read(new File("GimpFiles\\Countries\\Greenland.png")), "Greenland",

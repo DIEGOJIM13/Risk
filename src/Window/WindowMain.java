@@ -355,7 +355,6 @@ public class WindowMain {
 				gameState.gameStart();
 				troopsLeft = gameState.getCurrPlayer().getBonus();
 				numberOfTroops.setText(Integer.toString(troopsLeft));
-				System.out.println(gameState);
 				System.out.println(gameState.getAllPlayers().getPlayers().size());
 				if (gameState.getAllPlayers().getPlayers().size() > 0){	//Display the 
 					if (gameState.getAllPlayers().getPlayers().size() > 0) {
@@ -661,14 +660,15 @@ public class WindowMain {
 					arrow0.setVisible(true);
 					arrow1.setVisible(false);
 					arrow2.setVisible(false);
-					troopsLeft = gameState.getCurrPlayer().getBonus();
 					numberOfTroops.setText(Integer.toString(gameState.getCurrPlayer().getBonus()));
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.LIGHT_GRAY);
 					gameState.setNextPlayer();
+					troopsLeft = gameState.getCurrPlayer().getBonus();
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.GRAY);
 					gameState.setCountry1(null);
 	    			gameState.setCountry2(null);
 					JOptionPane.showMessageDialog(null, "It is the beggining of " + gameState.getCurrPlayer().getName() + "'s turn!");
+					System.out.println(gameState);
 				}
 				else if (gameState.getCurrPhase() == 1){
 					unitDisplay.setVisible(false);
