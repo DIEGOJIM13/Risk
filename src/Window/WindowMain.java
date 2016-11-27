@@ -16,6 +16,7 @@ import java.awt.CardLayout;
 import java.awt.Font;
 import javax.swing.border.LineBorder;
 
+import Army.Troop;
 import Player.Player;
 import World.*;
 
@@ -48,6 +49,7 @@ public class WindowMain {
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private GameState gameState;
+	private int troopsLeft;
 	/**
 	 * Create the application.
 	 * @throws IOException 
@@ -322,6 +324,7 @@ public class WindowMain {
 		player4Name.setVisible(false);
 		JFormattedTextField player5Name = new JFormattedTextField();
 		player5Name.setVisible(false);
+		JLabel numberOfTroops = new JLabel("0");
 		panel_1.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -350,6 +353,8 @@ public class WindowMain {
 					gameState.addPlayer(p5);
 				}
 				gameState.gameStart();
+				troopsLeft = gameState.getCurrPlayer().getBonus();
+				numberOfTroops.setText(Integer.toString(troopsLeft));
 				System.out.println(gameState);
 				System.out.println(gameState.getAllPlayers().getPlayers().size());
 				if (gameState.getAllPlayers().getPlayers().size() > 0){	//Display the 
@@ -479,15 +484,17 @@ public class WindowMain {
 		    	@Override
 	            public void actionPerformed(ActionEvent e) {
 		    		if (gameState.getCurrPhase() == 0){ 
-		    			
-		    			for(int i = 0; i < countryButton.country.getPlayer().getBonus(); i++) {
-		    				if(tempCountry != null) {
-		    					tempCountry.addInfrantry(1);
-		    				}
-		    				else {
-		    					System.out.println("Error: User doens't have the country or country doesn't exist");
-		    					i--;
-		    				}
+		    			if (gameState.getCurrPlayer() == countryButton.country.getPlayer() && troopsLeft > 0){
+		    				troopsLeft--;
+		    				countryButton.country.addInfrantry(1);
+		    				numberOfTroops.setText(Integer.toString(troopsLeft));
+		    				gameState.updateCountryLabels();
+		    			}
+		    			else if (troopsLeft == 0){
+		    				JOptionPane.showMessageDialog(countryButton.b, "Out of troops to add");
+		    			}
+		    			else{
+		    				JOptionPane.showMessageDialog(countryButton.b, "That country does not belong to you.");
 		    			}
 		    		}
 		    		else if (gameState.getCurrPhase() == 1){
@@ -560,7 +567,7 @@ public class WindowMain {
 		
 		JLabel lblPlayer = new JLabel("");
 		lblPlayer.setIcon(new ImageIcon("GimpFiles\\Map.png"));
-		lblPlayer.setBounds(0, 29, 1194, 831);
+		lblPlayer.setBounds(0, 30, 1194, 831);
 		map.add(lblPlayer);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -627,7 +634,11 @@ public class WindowMain {
 		JPanel arrow0 = new JPanel();
 		JPanel arrow1 = new JPanel();
 		JPanel arrow2 = new JPanel();
-		
+		JPanel unitDisplay = new JPanel();
+
+		numberOfTroops.setFont(new Font("Tahoma", Font.PLAIN, 20));
+
+		unitDisplay.setVisible(true);
 		arrow0.setVisible(true);
 		arrow1.setVisible(false);
 		arrow2.setVisible(false);
@@ -638,22 +649,26 @@ public class WindowMain {
 			public void mouseClicked(MouseEvent arg0) {
 				gameState.setCurrPhase((gameState.getCurrPhase() + 1) % 3);
 				if (gameState.getCurrPhase() == 0){
+					unitDisplay.setVisible(true);
 					arrow0.setVisible(true);
 					arrow1.setVisible(false);
 					arrow2.setVisible(false);
+					troopsLeft = gameState.getCurrPlayer().getBonus();
+					numberOfTroops.setText(Integer.toString(gameState.getCurrPlayer().getBonus()));
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.LIGHT_GRAY);
 					gameState.setNextPlayer();
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.GRAY);
 					gameState.setCountry1(null);
 	    			gameState.setCountry2(null);
-	    			JOptionPane.showMessageDialog(null, "Click on countries to add troops to them, you have " + countryButton.country.getPlayer().getBonus() + " troops available.");
 				}
 				else if (gameState.getCurrPhase() == 1){
+					unitDisplay.setVisible(false);
 					arrow0.setVisible(false);
 					arrow1.setVisible(true);
 					arrow2.setVisible(false);
 				}
 				else {
+					unitDisplay.setVisible(false);
 					arrow0.setVisible(false);
 					arrow1.setVisible(false);
 					arrow2.setVisible(true);
@@ -741,6 +756,22 @@ public class WindowMain {
 		label_8.setIcon(new ImageIcon("GimpFiles\\arrow.png"));
 		label_8.setBounds(0, 0, 30, 30);
 		arrow2.add(label_8);
+		
+		
+		unitDisplay.setBackground(Color.LIGHT_GRAY);
+		unitDisplay.setBounds(510, 765, 220, 30);
+		map.add(unitDisplay);
+		unitDisplay.setLayout(null);
+		
+		JLabel lblNewLabel_4 = new JLabel("Troops Remaining: ");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		lblNewLabel_4.setBounds(0, 0, 174, 30);
+		unitDisplay.add(lblNewLabel_4);
+		
+		
+		numberOfTroops.setHorizontalAlignment(SwingConstants.CENTER);
+		numberOfTroops.setBounds(175, 0, 45, 30);
+		unitDisplay.add(numberOfTroops);
 		
 		JPanel resultsScreen = new JPanel();
 		resultsScreen.setBackground(Color.LIGHT_GRAY);
