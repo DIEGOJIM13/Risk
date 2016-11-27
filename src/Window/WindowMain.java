@@ -499,8 +499,14 @@ public class WindowMain {
 		    		}
 		    		else if (gameState.getCurrPhase() == 1){
 			    		if (countryButton.country.getPlayer() == gameState.getCurrPlayer() && gameState.getCountry1() == null){
-			    			gameState.setCountry1(countryButton.country);
-			    			JOptionPane.showMessageDialog(countryButton.b, "Country1 is " + gameState.getCountry1().getName());
+			    			if(countryButton.country.getTroops().size() > 1){
+				    			gameState.setCountry1(countryButton.country);
+				    			JOptionPane.showMessageDialog(countryButton.b, "Country1 is " + gameState.getCountry1().getName());
+			    			}
+			    			else{
+			    				gameState.setCountry1(null);
+			    				JOptionPane.showMessageDialog(countryButton.b, "Country does not have enough troops to attack");
+			    			}
 			    		}
 			    		else if (countryButton.country.getPlayer() != gameState.getCurrPlayer() && gameState.getCountry1() != null && gameState.getCountry2() == null){
 			    			gameState.setCountry2(countryButton.country);
