@@ -17,6 +17,8 @@ public class GameState {
 	private int currPhase; // 0 beggining, 1 attack, 2 move
 	private World world;
 	private Clip music;
+	private Country country1;
+	private Country country2;
 	
 	public GameState() {
 		this.currPlayer = null;  // will set this at the beggining of the turn
@@ -117,6 +119,22 @@ public class GameState {
 	
 	public void stopCurrentSound() {
 		this.music.close();
+	}
+
+	public Country getCountry1() {
+		return country1;
+	}
+
+	public void setCountry1(Country country1) {
+		this.country1 = country1;
+	}
+
+	public Country getCountry2() {
+		return country2;
+	}
+
+	public void setCountry2(Country country2) {
+		this.country2 = country2;
 	}
 	
 	

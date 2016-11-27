@@ -98,6 +98,8 @@ public class Country {
 	public CountryButton getButton() {
 		return this.button;
 	}
-	public void checkAdjacent(Country c1){}
+	public boolean checkAdjacent(Country c1){
+		return this.borderingCountries.contains(c1);
+	}
 	public void addTroop(int num){}
 }

@@ -67,17 +67,23 @@ public class CountryButton{
 	    b.setOpaque(false);
 	    b.setContentAreaFilled(false);
 	    b.setBorderPainted(false);
+	    /*
 	    b.addActionListener(new ActionListener(){
 	    	@Override
             public void actionPerformed(ActionEvent e) {
                 JOptionPane.showMessageDialog(b, "You clicked on the " + country.getName() + " button");
             }
 	    });
+	    */
 	}
 	
 	
 	public void setDoubleBounds(int x, int y, int w, int h) {
 		this.b.setBounds(x, y, w, h);
+		this.label.setBounds(x, y, w, h);
+	}
+	
+	public void fixLabelBounds(int x, int y, int w, int h) {
 		this.label.setBounds(x, y, w, h);
 	}
 	

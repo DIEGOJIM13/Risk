@@ -3,10 +3,13 @@ package Window;
 import javax.swing.JFrame;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 import javax.swing.SwingConstants;
 import java.awt.Color;
 import java.awt.CardLayout;
@@ -20,6 +23,8 @@ import javax.swing.border.BevelBorder;
 import java.awt.GridLayout;
 import javax.swing.JFormattedTextField;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
@@ -37,9 +42,9 @@ public class WindowMain {
 
 	private JFrame frame1;
 	private JPanel cards;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
+	private JTextField txtEddie;
+	private JTextField txtHugo;
+	private JTextField txtDiego;
 	private JTextField textField_3;
 	private JTextField textField_4;
 	private GameState gameState;
@@ -107,6 +112,7 @@ public class WindowMain {
 		panel_13.setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Exit");
+		lblNewLabel.setForeground(Color.WHITE);
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(0, 0, 50, 30);
 		panel_13.add(lblNewLabel);
@@ -324,15 +330,15 @@ public class WindowMain {
 				gameState.playSound("music\\introToMap.wav");
 				//gameState.playSound("music\\Risk.wav");
 				if(panel_8.isVisible()) {
-					Player p1 = new Player(textField.getText(), Color.cyan);
+					Player p1 = new Player(txtEddie.getText(), Color.cyan);
 					gameState.addPlayer(p1);
 				}
 				if(panel_9.isVisible()) {
-					Player p2 = new Player(textField_1.getText(), Color.magenta);
+					Player p2 = new Player(txtHugo.getText(), Color.magenta);
 					gameState.addPlayer(p2);
 				}
 				if(panel_10.isVisible()) {
-					Player p3 = new Player(textField_2.getText(), Color.green);
+					Player p3 = new Player(txtDiego.getText(), Color.green);
 					gameState.addPlayer(p3);
 				}
 				if(panel_11.isVisible()) {
@@ -376,6 +382,8 @@ public class WindowMain {
 				}
 			}
 		});
+		
+		
 		panel_1.setLayout(null);
 		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
 		panel_1.setBackground(Color.RED);
@@ -404,9 +412,10 @@ public class WindowMain {
 		lblNameOfPlayer.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		panel_8.add(lblNameOfPlayer);
 		
-		textField = new JTextField();
-		panel_8.add(textField);
-		textField.setColumns(10);
+		txtEddie = new JTextField();
+		txtEddie.setText("Eddie");
+		panel_8.add(txtEddie);
+		txtEddie.setColumns(10);
 		
 		
 		panel_9.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -417,9 +426,10 @@ public class WindowMain {
 		label_9.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		panel_9.add(label_9);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		panel_9.add(textField_1);
+		txtHugo = new JTextField();
+		txtHugo.setText("Hugo");
+		txtHugo.setColumns(10);
+		panel_9.add(txtHugo);
 		
 		
 		panel_10.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -430,9 +440,10 @@ public class WindowMain {
 		label_10.setFont(new Font("Tahoma", Font.PLAIN, 30));
 		panel_10.add(label_10);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		panel_10.add(textField_2);
+		txtDiego = new JTextField();
+		txtDiego.setText("Diego");
+		txtDiego.setColumns(10);
+		panel_10.add(txtDiego);
 		
 		
 		panel_11.setBorder(new LineBorder(new Color(0, 0, 0)));
@@ -461,7 +472,91 @@ public class WindowMain {
 		panel_12.add(textField_4);
 		
 		map.setLayout(null);
-		new Game(map, gameState.getWorld()); 
+		Game g = new Game(map, gameState.getWorld()); 
+		
+		for (CountryButton countryButton : g.getButtons()){
+			countryButton.b.addActionListener(new ActionListener(){
+		    	@Override
+	            public void actionPerformed(ActionEvent e) {
+		    		if (gameState.getCurrPhase() == 0){ 
+		    			
+		    			for(int i = 0; i < countryButton.country.getPlayer().getBonus(); i++) {
+		    				if(tempCountry != null) {
+		    					tempCountry.addInfrantry(1);
+		    				}
+		    				else {
+		    					System.out.println("Error: User doens't have the country or country doesn't exist");
+		    					i--;
+		    				}
+		    			}
+		    		}
+		    		else if (gameState.getCurrPhase() == 1){
+			    		if (countryButton.country.getPlayer() == gameState.getCurrPlayer() && gameState.getCountry1() == null){
+			    			gameState.setCountry1(countryButton.country);
+			    			JOptionPane.showMessageDialog(countryButton.b, "Country1 is " + gameState.getCountry1().getName());
+			    		}
+			    		else if (countryButton.country.getPlayer() != gameState.getCurrPlayer() && gameState.getCountry1() != null && gameState.getCountry2() == null){
+			    			gameState.setCountry2(countryButton.country);
+			    			if (gameState.getCountry1().checkAdjacent(gameState.getCountry2())){
+			    				JOptionPane.showMessageDialog(countryButton.b, "Country2 is " + gameState.getCountry2().getName());
+			    				gameState.getCurrPlayer().attack(gameState.getCountry1(), gameState.getCountry2());
+				    			gameState.updateCountryLabels();
+				    			gameState.setCountry1(null);
+				    			gameState.setCountry2(null);
+			    			}
+			    			else{
+			    				JOptionPane.showMessageDialog(countryButton.b, "Countries are not adjacent, select the second country again.");
+			    				gameState.setCountry2(null);
+			    			}
+			    		}			    		
+		    		}
+		    		else{
+		    			if (gameState.getCountry1() == null){
+			    			gameState.setCountry1(countryButton.country);
+			    			if (gameState.getCountry1().getTroops().size() == 1){
+			    				JOptionPane.showMessageDialog(countryButton.b, "Troops cannot be moved from here because " + gameState.getCountry1().getName() + " only has 1 troop.");
+			    				gameState.setCountry1(null);
+			    			}
+			    			JOptionPane.showMessageDialog(countryButton.b, "Country1 is " + gameState.getCountry1().getName());
+			    		}
+			    		else if (countryButton.country.getPlayer() == gameState.getCurrPlayer() && gameState.getCountry1() != null && gameState.getCountry2() == null){
+			    			gameState.setCountry2(countryButton.country);
+			    			if (gameState.getCountry1().checkAdjacent(gameState.getCountry2())){
+			    				JOptionPane.showMessageDialog(countryButton.b, "Country2 is " + gameState.getCountry2().getName());
+			    				JPanel numPanel = new JPanel();
+			    				numPanel.add(new JLabel("Select how many troops to add"));
+			    				DefaultComboBoxModel<String> selection = new DefaultComboBoxModel<String>();
+			    				for (int i = 1; i < gameState.getCountry1().getTroops().size(); i++){
+			    					selection.addElement(Integer.toString(i));
+			    				}
+			    				JComboBox<String> comboBox = new JComboBox<String>(selection);
+			    				numPanel.add(comboBox);
+			    				int result = JOptionPane.showConfirmDialog(null, numPanel, "Number of Troops", JOptionPane.OK_CANCEL_OPTION, JOptionPane.QUESTION_MESSAGE);
+			    				if (result == JOptionPane.OK_OPTION){
+			    					gameState.getCurrPlayer().moveTroops(gameState.getCountry1(), gameState.getCountry2(), Integer.parseInt(comboBox.getSelectedItem().toString()));
+					    			gameState.updateCountryLabels();
+					    			gameState.setCountry1(null);
+					    			gameState.setCountry2(null);
+			    				}
+			    				else{
+			    					JOptionPane.showMessageDialog(countryButton.b, "Attack was cancelled.");
+			    					gameState.setCountry1(null);
+					    			gameState.setCountry2(null);
+			    				}
+			    			}
+			    			else{
+			    				JOptionPane.showMessageDialog(countryButton.b, "Countries are not adjacent, select the second country again.");
+			    				gameState.setCountry2(null);
+			    			}
+			    			gameState.updateCountryLabels();
+			    			gameState.setCountry1(null);
+			    			gameState.setCountry2(null);
+			    		}
+		    		}
+	                //JOptionPane.showMessageDialog(countryButton.b, "You clicked on the " + countryButton.country.getName() + " button");
+	            }
+		    });
+		}
 		
 		JLabel lblPlayer = new JLabel("");
 		lblPlayer.setIcon(new ImageIcon("GimpFiles\\Map.png"));
@@ -475,7 +570,12 @@ public class WindowMain {
 		JMenu mnNewMenu = new JMenu("Game");
 		menuBar.add(mnNewMenu);
 		
-		JMenuItem mntmNewMenuItem = new JMenuItem("item1");
+		JMenuItem mntmNewMenuItem = new JMenuItem("Exit");
+		mntmNewMenuItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				System.exit(0);
+			}
+		});
 		mnNewMenu.add(mntmNewMenuItem);
 		
 		
@@ -544,6 +644,9 @@ public class WindowMain {
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.LIGHT_GRAY);
 					gameState.setNextPlayer();
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.GRAY);
+					gameState.setCountry1(null);
+	    			gameState.setCountry2(null);
+	    			JOptionPane.showMessageDialog(null, "Click on countries to add troops to them, you have " + countryButton.country.getPlayer().getBonus() + " troops available.");
 				}
 				else if (gameState.getCurrPhase() == 1){
 					arrow0.setVisible(false);
@@ -669,6 +772,19 @@ public class WindowMain {
 		panel_18.add(lblHasWonThe);
 		lblHasWonThe.setFont(new Font("Tahoma", Font.PLAIN, 50));
 		lblHasWonThe.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		JLabel label_12 = new JLabel("");
+		label_12.setIcon(new ImageIcon("GimpFiles\\Soldiers.png"));
+		label_12.setBounds(300, 400, 600, 321);
+		resultsScreen.add(label_12);
+		
+		gameState.getWorld().getContinents().get(0).getCountries().get(0).getButton().b.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				System.out.println(gameState.getWorld().getContinents().get(0).getCountries().get(0).getName());
+			
+			}
+		});
 
 	}
 }
