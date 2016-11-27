@@ -385,6 +385,8 @@ public class WindowMain {
 						player5Name.setVisible(true);
 					}
 				}
+				JOptionPane.showMessageDialog(null, "It is the beggining of " + gameState.getCurrPlayer().getName() + "'s turn!");
+
 			}
 		});
 		
@@ -552,7 +554,7 @@ public class WindowMain {
 					    			gameState.setCountry2(null);
 			    				}
 			    				else{
-			    					JOptionPane.showMessageDialog(countryButton.b, "Attack was cancelled.");
+			    					JOptionPane.showMessageDialog(countryButton.b, "Move was cancelled.");
 			    					gameState.setCountry1(null);
 					    			gameState.setCountry2(null);
 			    				}
@@ -666,19 +668,21 @@ public class WindowMain {
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.GRAY);
 					gameState.setCountry1(null);
 	    			gameState.setCountry2(null);
+					JOptionPane.showMessageDialog(null, "It is the beggining of " + gameState.getCurrPlayer().getName() + "'s turn!");
 				}
 				else if (gameState.getCurrPhase() == 1){
 					unitDisplay.setVisible(false);
 					arrow0.setVisible(false);
 					arrow1.setVisible(true);
 					arrow2.setVisible(false);
+					JOptionPane.showMessageDialog(null, "It is the attacking stage of " + gameState.getCurrPlayer().getName() + "'s turn!");
 				}
 				else {
 					unitDisplay.setVisible(false);
 					arrow0.setVisible(false);
 					arrow1.setVisible(false);
 					arrow2.setVisible(true);
-
+					JOptionPane.showMessageDialog(null, "It is the moving stage of " + gameState.getCurrPlayer().getName() + "'s turn!");
 				}
 				
 				
