@@ -204,6 +204,8 @@ public class World {
 		Irkutsk.addBorderingCountry(Yakutsk);
 		Irkutsk.addBorderingCountry(Kamchatka);
 		Kamchatka.addBorderingCountry(Japan);
+		Yakutsk.addBorderingCountry(Siberia);
+		Yakutsk.addBorderingCountry(Kamchatka);
 		
 		Indonesia.addBorderingCountry(WesternAustralia);
 		Indonesia.addBorderingCountry(NewGuinea);
