@@ -39,6 +39,7 @@ import java.awt.SystemColor;
 import javax.swing.JTextArea;
 import java.awt.Scrollbar;
 import javax.swing.JButton;
+import java.awt.Component;
 
 public class WindowMain {
 
@@ -540,6 +541,8 @@ public class WindowMain {
 			    		else if (countryButton.country.getPlayer() != gameState.getCurrPlayer() && gameState.getCountry1() != null && gameState.getCountry2() == null){
 			    			gameState.setCountry2(countryButton.country);
 			    			if (gameState.getCountry1().checkAdjacent(gameState.getCountry2())){
+			    				cancelbtn.setVisible(false);
+				    			cancelbtn.setEnabled(false);
 			    				country2.setText(gameState.getCountry2().getName());
 			    				//JOptionPane.showMessageDialog(countryButton.b, "Country2 is " + gameState.getCountry2().getName());	    				
 			    				gameState.getCurrPlayer().attack(gameState.getCountry1(), gameState.getCountry2());
@@ -576,6 +579,8 @@ public class WindowMain {
 			    			country2.setText(gameState.getCountry2().getName());
 			    			if (gameState.getCountry1().checkAdjacent(gameState.getCountry2())){
 			    				//JOptionPane.showMessageDialog(countryButton.b, "Country2 is " + gameState.getCountry2().getName());
+			    				cancelbtn.setVisible(false);
+				    			cancelbtn.setEnabled(false);
 			    				JPanel numPanel = new JPanel();
 			    				numPanel.add(new JLabel("Select how many troops to add"));
 			    				DefaultComboBoxModel<String> selection = new DefaultComboBoxModel<String>();
@@ -835,6 +840,7 @@ public class WindowMain {
 		map.add(Country1Display);
 		
 		JLabel lblCountryIs = new JLabel("Country 1:");
+		lblCountryIs.setAlignmentY(Component.TOP_ALIGNMENT);
 		lblCountryIs.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		Country1Display.add(lblCountryIs);
 		
