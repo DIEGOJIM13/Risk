@@ -433,7 +433,7 @@ public class WindowMain {
 		panel_9.add(label_9);
 		
 		txtHugo = new JTextField();
-		txtHugo.setText("Hugo");
+		txtHugo.setText("Sam");
 		txtHugo.setColumns(10);
 		panel_9.add(txtHugo);
 		
@@ -660,9 +660,9 @@ public class WindowMain {
 					arrow0.setVisible(true);
 					arrow1.setVisible(false);
 					arrow2.setVisible(false);
-					numberOfTroops.setText(Integer.toString(gameState.getCurrPlayer().getBonus()));
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.LIGHT_GRAY);
 					gameState.setNextPlayer();
+					numberOfTroops.setText(Integer.toString(gameState.getCurrPlayer().getBonus()));
 					troopsLeft = gameState.getCurrPlayer().getBonus();
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.GRAY);
 					gameState.setCountry1(null);

@@ -115,12 +115,24 @@ public class Player {
 		ArrayList<Integer> defendRoll = new ArrayList<Integer>(); // will contain all of the defender's roll
 
 		for(int i = 0; i < Math.min(c1.getTroops().size() - 1, 3); i++) { // populating the attacker's rolls
-			Integer tempInt = new Integer(rand.nextInt(6) + 1);
-			attackRoll.add(tempInt);
+			if(c1.getPlayer().getName().equals("Sam")){
+				Integer tempInt = new Integer(rand.nextInt(4) + 1);
+				attackRoll.add(tempInt);
+			}
+			else{
+				Integer tempInt = new Integer(rand.nextInt(6) + 1);
+				attackRoll.add(tempInt);
+			}
 		}
 		for(int i = 0; i < Math.min(c2.getTroops().size(), 2); i++) { // populating the defender's rolls
-			Integer tempInt = new Integer(rand.nextInt(6) + 1);
-			defendRoll.add(tempInt);
+			if(c2.getPlayer().getName().equals("Sam")){
+				Integer tempInt = new Integer(rand.nextInt(4) + 1);
+				defendRoll.add(tempInt);
+			}
+			else{
+				Integer tempInt = new Integer(rand.nextInt(6) + 1);
+				defendRoll.add(tempInt);
+			}
 		}
 		String diceString = "Attacker rolled:\n";
 		for(int i = 0; i < attackRoll.size(); i++) {
@@ -156,7 +168,10 @@ public class Player {
 		}
 		
 		if(c2.getTroops().size() == 0) { // if the defending country was taken over
+			c2.getPlayer().removeCountry(c2);
 			c2.setPlayer(this);
+			this.addCountry(c2);
+			
 			int moveNum = 0;
 			JPanel numPanel = new JPanel();
 			numPanel.add(new JLabel("Congrats you conquered " + c2.getName() + " with " + c1.getName() + ". How many troops would you like to add?"));
@@ -265,14 +280,14 @@ public class Player {
 		return 0;}
 	
 	public int getBonus() {
-		int reward = Math.floorDiv(this.countries.size(), 3);
+		int reward = this.getCountries().size()/3;
 		boolean owned = true;
 		World world = this.countries.get(0).getContinent().getWorld();
 		
 		for(Continent con : this.countries.get(0).getContinent().getWorld().getContinents()) {
 			owned = true;
 			for(Country cou : con.getCountries()) {
-				if(cou.getPlayer() != this) {
+				if(!(cou.getPlayer().equals(this))) {
 					owned = false;
 					//break;
 				}
@@ -285,7 +300,8 @@ public class Player {
 			}
 		}
 
-		
+		System.out.println("reward " + reward);
+		System.out.println("size " + this.countries.size());
 		return reward;
 	}
 	public void addInfrantry(int numTroops) {
@@ -297,6 +313,10 @@ public class Player {
 
 	public void addCountry(Country c) {
 		this.countries.add(c);
+	}
+	
+	public void removeCountry(Country c){
+		this.countries.remove(c);
 	}
 
 	public JFormattedTextField getPlayerTextName() {

@@ -181,6 +181,7 @@ public class World {
 		SouthernEurope.addBorderingCountry(NorthernEurope);
 		SouthernEurope.addBorderingCountry(Ukraine);
 		SouthernEurope.addBorderingCountry(MiddleEast);
+		SouthernEurope.addBorderingCountry(NorthAfrica);
 		
 		MiddleEast.addBorderingCountry(Afghanistan);
 		MiddleEast.addBorderingCountry(India);
