@@ -45,11 +45,11 @@ public class WindowMain {
 
 	private JFrame frame1;
 	private JPanel cards;
-	private JTextField txtEddie;
-	private JTextField txtHugo;
-	private JTextField txtDiego;
-	private JTextField textField_3;
-	private JTextField textField_4;
+	private JTextField player1TextField;
+	private JTextField player2TextField;
+	private JTextField player3TextField;
+	private JTextField player4TextField;
+	private JTextField player5TextField;
 	private GameState gameState;
 	private int troopsLeft;
 	/**
@@ -95,42 +95,42 @@ public class WindowMain {
 		//frame1.getContentPane().add(mainScreen, "name_21718623405784");
 		
 		CardLayout cardLayout = (CardLayout) cards.getLayout();
-		JPanel panel = new JPanel();
-		panel.addMouseListener(new MouseAdapter() {
+		JPanel startGame = new JPanel();
+		startGame.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Player Selection");
 			}
 		});
 		
-		JPanel panel_13 = new JPanel();
-		panel_13.addMouseListener(new MouseAdapter() {
+		JPanel exitPanel = new JPanel();
+		exitPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				System.exit(0);
 			}
 		});
-		panel_13.setBackground(Color.RED);
-		panel_13.setBounds(1130, 820, 50, 30);
-		mainScreen.add(panel_13);
-		panel_13.setLayout(null);
+		exitPanel.setBackground(Color.RED);
+		exitPanel.setBounds(1130, 820, 50, 30);
+		mainScreen.add(exitPanel);
+		exitPanel.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Exit");
-		lblNewLabel.setForeground(Color.WHITE);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel.setBounds(0, 0, 50, 30);
-		panel_13.add(lblNewLabel);
-		panel.setBackground(new Color(255, 0, 0));
-		panel.setBounds(451, 177, 317, 77);
-		mainScreen.add(panel);
-		panel.setLayout(null);
+		JLabel exitLabel = new JLabel("Exit");
+		exitLabel.setForeground(Color.WHITE);
+		exitLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		exitLabel.setBounds(0, 0, 50, 30);
+		exitPanel.add(exitLabel);
+		startGame.setBackground(new Color(255, 0, 0));
+		startGame.setBounds(451, 177, 317, 77);
+		mainScreen.add(startGame);
+		startGame.setLayout(null);
 		
-		JLabel lblStart = new JLabel("Start Game");
-		lblStart.setForeground(new Color(255, 255, 255));
-		lblStart.setFont(new Font("Tahoma", Font.PLAIN, 60));
-		lblStart.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStart.setBounds(0, 0, 317, 77);
-		panel.add(lblStart);
+		JLabel labelStart = new JLabel("Start Game");
+		labelStart.setForeground(new Color(255, 255, 255));
+		labelStart.setFont(new Font("Tahoma", Font.PLAIN, 60));
+		labelStart.setHorizontalAlignment(SwingConstants.CENTER);
+		labelStart.setBounds(0, 0, 317, 77);
+		startGame.add(labelStart);
 		
 		JLabel label = new JLabel("");
 		label.setBounds(0, 0, 1194, 860);
@@ -158,162 +158,162 @@ public class WindowMain {
 		label_2.setBounds(0, 0, 800, 100);
 		playerQuestion.add(label_2);
 		
-		JPanel panel_2 = new JPanel();
-		JPanel panel_3 = new JPanel();
-		JPanel panel_4 = new JPanel();
-		JPanel panel_5 = new JPanel();
-		JPanel panel_8 = new JPanel();
-		panel_8.setBackground(Color.CYAN);
-		JPanel panel_9 = new JPanel();
-		panel_9.setBackground(Color.MAGENTA);
-		JPanel panel_10 = new JPanel();
-		panel_10.setBackground(Color.GREEN);
-		JPanel panel_11 = new JPanel();
-		panel_11.setBackground(Color.WHITE);
-		JPanel panel_12 = new JPanel();
-		panel_12.setBackground(Color.YELLOW);
-		panel_8.setVisible(false);
-		panel_9.setVisible(false);
-		panel_10.setVisible(false);
-		panel_11.setVisible(false);
-		panel_12.setVisible(false);
+		JPanel playerTwo = new JPanel();
+		JPanel playerThree = new JPanel();
+		JPanel playerFour = new JPanel();
+		JPanel playerFive = new JPanel();
+		JPanel playerOneText = new JPanel();
+		playerOneText.setBackground(Color.CYAN);
+		JPanel playerTwoText = new JPanel();
+		playerTwoText.setBackground(Color.MAGENTA);
+		JPanel playerThreeText = new JPanel();
+		playerThreeText.setBackground(Color.GREEN);
+		JPanel playerFourText = new JPanel();
+		playerFourText.setBackground(Color.WHITE);
+		JPanel playerFiveText = new JPanel();
+		playerFiveText.setBackground(Color.YELLOW);
+		playerOneText.setVisible(false);
+		playerTwoText.setVisible(false);
+		playerThreeText.setVisible(false);
+		playerFourText.setVisible(false);
+		playerFiveText.setVisible(false);
 		
-		panel_2.addMouseListener(new MouseAdapter() {
+		playerTwo.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel_2.setBackground(Color.BLUE);
-				panel_3.setBackground(Color.RED);
-				panel_4.setBackground(Color.RED);
-				panel_5.setBackground(Color.RED);
-				panel_8.setVisible(true);
-				panel_9.setVisible(true);
-				panel_10.setVisible(false);
-				panel_11.setVisible(false);
-				panel_12.setVisible(false);
+				playerTwo.setBackground(Color.BLUE);
+				playerThree.setBackground(Color.RED);
+				playerFour.setBackground(Color.RED);
+				playerFive.setBackground(Color.RED);
+				playerOneText.setVisible(true);
+				playerTwoText.setVisible(true);
+				playerThreeText.setVisible(false);
+				playerFourText.setVisible(false);
+				playerFiveText.setVisible(false);
 				
 			}
 		});
-		panel_3.addMouseListener(new MouseAdapter() {
+		playerThree.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel_2.setBackground(Color.RED);
-				panel_3.setBackground(Color.BLUE);
-				panel_4.setBackground(Color.RED);
-				panel_5.setBackground(Color.RED);
-				panel_8.setVisible(true);
-				panel_9.setVisible(true);
-				panel_10.setVisible(true);
-				panel_11.setVisible(false);
-				panel_12.setVisible(false);
+				playerTwo.setBackground(Color.RED);
+				playerThree.setBackground(Color.BLUE);
+				playerFour.setBackground(Color.RED);
+				playerFive.setBackground(Color.RED);
+				playerOneText.setVisible(true);
+				playerTwoText.setVisible(true);
+				playerThreeText.setVisible(true);
+				playerFourText.setVisible(false);
+				playerFiveText.setVisible(false);
 			}
 		});
-		panel_4.addMouseListener(new MouseAdapter() {
+		playerFour.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel_2.setBackground(Color.RED);
-				panel_3.setBackground(Color.RED);
-				panel_4.setBackground(Color.BLUE);
-				panel_5.setBackground(Color.RED);
-				panel_8.setVisible(true);
-				panel_9.setVisible(true);
-				panel_10.setVisible(true);
-				panel_11.setVisible(true);
-				panel_12.setVisible(false);
+				playerTwo.setBackground(Color.RED);
+				playerThree.setBackground(Color.RED);
+				playerFour.setBackground(Color.BLUE);
+				playerFive.setBackground(Color.RED);
+				playerOneText.setVisible(true);
+				playerTwoText.setVisible(true);
+				playerThreeText.setVisible(true);
+				playerFourText.setVisible(true);
+				playerFiveText.setVisible(false);
 			}
 		});
-		panel_5.addMouseListener(new MouseAdapter() {
+		playerFive.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				panel_2.setBackground(Color.RED);
-				panel_3.setBackground(Color.RED);
-				panel_4.setBackground(Color.RED);
-				panel_5.setBackground(Color.BLUE);
-				panel_8.setVisible(true);
-				panel_9.setVisible(true);
-				panel_10.setVisible(true);
-				panel_11.setVisible(true);
-				panel_12.setVisible(true);
+				playerTwo.setBackground(Color.RED);
+				playerThree.setBackground(Color.RED);
+				playerFour.setBackground(Color.RED);
+				playerFive.setBackground(Color.BLUE);
+				playerOneText.setVisible(true);
+				playerTwoText.setVisible(true);
+				playerThreeText.setVisible(true);
+				playerFourText.setVisible(true);
+				playerFiveText.setVisible(true);
 			}
 		});
-		panel_2.setLayout(null);
-		panel_2.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_2.setBackground(Color.RED);
-		panel_2.setBounds(200, 300, 100, 100);
-		playerSelect.add(panel_2);
+		playerTwo.setLayout(null);
+		playerTwo.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		playerTwo.setBackground(Color.RED);
+		playerTwo.setBounds(200, 300, 100, 100);
+		playerSelect.add(playerTwo);
 		
-		JLabel label_1 = new JLabel("2");
-		label_1.setHorizontalAlignment(SwingConstants.CENTER);
-		label_1.setForeground(Color.WHITE);
-		label_1.setFont(new Font("Dialog", Font.PLAIN, 50));
-		label_1.setBackground(new Color(0, 128, 128));
-		label_1.setBounds(0, 0, 100, 100);
-		panel_2.add(label_1);
-		
-		
-		panel_3.setLayout(null);
-		panel_3.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_3.setBackground(Color.RED);
-		panel_3.setBounds(433, 300, 100, 100);
-		playerSelect.add(panel_3);
-		
-		JLabel label_3 = new JLabel("3");
-		label_3.setHorizontalAlignment(SwingConstants.CENTER);
-		label_3.setForeground(Color.WHITE);
-		label_3.setFont(new Font("Dialog", Font.PLAIN, 50));
-		label_3.setBackground(new Color(0, 128, 128));
-		label_3.setBounds(0, 0, 100, 100);
-		panel_3.add(label_3);
+		JLabel playerTwoLabel = new JLabel("2");
+		playerTwoLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		playerTwoLabel.setForeground(Color.WHITE);
+		playerTwoLabel.setFont(new Font("Dialog", Font.PLAIN, 50));
+		playerTwoLabel.setBackground(new Color(0, 128, 128));
+		playerTwoLabel.setBounds(0, 0, 100, 100);
+		playerTwo.add(playerTwoLabel);
 		
 		
-		panel_4.setLayout(null);
-		panel_4.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_4.setBackground(Color.RED);
-		panel_4.setBounds(667, 300, 100, 100);
-		playerSelect.add(panel_4);
+		playerThree.setLayout(null);
+		playerThree.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		playerThree.setBackground(Color.RED);
+		playerThree.setBounds(433, 300, 100, 100);
+		playerSelect.add(playerThree);
 		
-		JLabel label_4 = new JLabel("4");
-		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		label_4.setForeground(Color.WHITE);
-		label_4.setFont(new Font("Dialog", Font.PLAIN, 50));
-		label_4.setBackground(new Color(0, 128, 128));
-		label_4.setBounds(0, 0, 100, 100);
-		panel_4.add(label_4);
+		JLabel playerThreeLabel = new JLabel("3");
+		playerThreeLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		playerThreeLabel.setForeground(Color.WHITE);
+		playerThreeLabel.setFont(new Font("Dialog", Font.PLAIN, 50));
+		playerThreeLabel.setBackground(new Color(0, 128, 128));
+		playerThreeLabel.setBounds(0, 0, 100, 100);
+		playerThree.add(playerThreeLabel);
 		
 		
-		panel_5.setLayout(null);
-		panel_5.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_5.setBackground(Color.RED);
-		panel_5.setBounds(900, 300, 100, 100);
-		playerSelect.add(panel_5);
+		playerFour.setLayout(null);
+		playerFour.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		playerFour.setBackground(Color.RED);
+		playerFour.setBounds(667, 300, 100, 100);
+		playerSelect.add(playerFour);
 		
-		JLabel label_5 = new JLabel("5");
-		label_5.setHorizontalAlignment(SwingConstants.CENTER);
-		label_5.setForeground(Color.WHITE);
-		label_5.setFont(new Font("Dialog", Font.PLAIN, 50));
-		label_5.setBackground(new Color(0, 128, 128));
-		label_5.setBounds(0, 0, 100, 100);
-		panel_5.add(label_5);
+		JLabel playerFourLabel = new JLabel("4");
+		playerFourLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		playerFourLabel.setForeground(Color.WHITE);
+		playerFourLabel.setFont(new Font("Dialog", Font.PLAIN, 50));
+		playerFourLabel.setBackground(new Color(0, 128, 128));
+		playerFourLabel.setBounds(0, 0, 100, 100);
+		playerFour.add(playerFourLabel);
 		
-		JPanel panel_6 = new JPanel();
-		panel_6.addMouseListener(new MouseAdapter() {
+		
+		playerFive.setLayout(null);
+		playerFive.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		playerFive.setBackground(Color.RED);
+		playerFive.setBounds(900, 300, 100, 100);
+		playerSelect.add(playerFive);
+		
+		JLabel playerFiveLabel = new JLabel("5");
+		playerFiveLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		playerFiveLabel.setForeground(Color.WHITE);
+		playerFiveLabel.setFont(new Font("Dialog", Font.PLAIN, 50));
+		playerFiveLabel.setBackground(new Color(0, 128, 128));
+		playerFiveLabel.setBounds(0, 0, 100, 100);
+		playerFive.add(playerFiveLabel);
+		
+		JPanel cancelPanel = new JPanel();
+		cancelPanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Main Screen");
 			}
 		});
-		panel_6.setLayout(null);
-		panel_6.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_6.setBackground(Color.RED);
-		panel_6.setBounds(700, 780, 200, 50);
-		playerSelect.add(panel_6);
+		cancelPanel.setLayout(null);
+		cancelPanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		cancelPanel.setBackground(Color.RED);
+		cancelPanel.setBounds(700, 780, 200, 50);
+		playerSelect.add(cancelPanel);
 		
-		JLabel label_6 = new JLabel("Cancel");
-		label_6.setHorizontalAlignment(SwingConstants.CENTER);
-		label_6.setForeground(Color.WHITE);
-		label_6.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		label_6.setBounds(0, 0, 200, 50);
-		panel_6.add(label_6);
-		JPanel panel_1 = new JPanel();
+		JLabel cancelLabel = new JLabel("Cancel");
+		cancelLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		cancelLabel.setForeground(Color.WHITE);
+		cancelLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cancelLabel.setBounds(0, 0, 200, 50);
+		cancelPanel.add(cancelLabel);
+		JPanel startGamePanel = new JPanel();
 		
 		JFormattedTextField player1Name = new JFormattedTextField();
 		player1Name.setVisible(false);
@@ -330,51 +330,51 @@ public class WindowMain {
 		JLabel country1 = new JLabel((String) null);
 		JLabel country2 = new JLabel((String) null);
 		
-		JButton cancelbtn = new JButton("Cancel\r\n");
-		cancelbtn.setVisible(false);
-		cancelbtn.setEnabled(false);
-		cancelbtn.setBackground(Color.RED);
-		cancelbtn.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		cancelbtn.setBounds(371, 765, 124, 70);
-		map.add(cancelbtn);
+		JButton cancelCountryButton = new JButton("Cancel\r\n");
+		cancelCountryButton.setVisible(false);
+		cancelCountryButton.setEnabled(false);
+		cancelCountryButton.setBackground(Color.RED);
+		cancelCountryButton.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		cancelCountryButton.setBounds(371, 775, 124, 60);
+		map.add(cancelCountryButton);
 		
-		cancelbtn.addActionListener(new ActionListener(){
+		cancelCountryButton.addActionListener(new ActionListener(){
 	    	@Override
             public void actionPerformed(ActionEvent e) {
 	    		gameState.setCountry1(null);
 	    		gameState.setCountry2(null);
 	    		country1.setText((String) null);
 	    		country2.setText((String) null);
-	    		cancelbtn.setEnabled(false);
-	    		cancelbtn.setVisible(false);
+	    		cancelCountryButton.setEnabled(false);
+	    		cancelCountryButton.setVisible(false);
 	    	}
 		});
 		
-		panel_1.addMouseListener(new MouseAdapter() {
+		startGamePanel.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				cardLayout.show(cards, "Game");
 				gameState.stopCurrentSound();
 				gameState.playSound("music\\introToMap.wav");
 				//gameState.playSound("music\\Risk.wav");
-				if(panel_8.isVisible()) {
-					Player p1 = new Player(txtEddie.getText(), Color.cyan);
+				if(playerOneText.isVisible()) {
+					Player p1 = new Player(player1TextField.getText(), Color.cyan);
 					gameState.addPlayer(p1);
 				}
-				if(panel_9.isVisible()) {
-					Player p2 = new Player(txtHugo.getText(), Color.magenta);
+				if(playerTwoText.isVisible()) {
+					Player p2 = new Player(player2TextField.getText(), Color.magenta);
 					gameState.addPlayer(p2);
 				}
-				if(panel_10.isVisible()) {
-					Player p3 = new Player(txtDiego.getText(), Color.green);
+				if(playerThreeText.isVisible()) {
+					Player p3 = new Player(player3TextField.getText(), Color.green);
 					gameState.addPlayer(p3);
 				}
-				if(panel_11.isVisible()) {
-					Player p4 = new Player(textField_3.getText(), Color.white);
+				if(playerFourText.isVisible()) {
+					Player p4 = new Player(player4TextField.getText(), Color.white);
 					gameState.addPlayer(p4);
 				}
-				if(panel_12.isVisible()) {
-					Player p5 = new Player(textField_4.getText(), Color.yellow);
+				if(playerFiveText.isVisible()) {
+					Player p5 = new Player(player5TextField.getText(), Color.yellow);
 					gameState.addPlayer(p5);
 				}
 				gameState.gameStart();
@@ -415,92 +415,92 @@ public class WindowMain {
 		});
 		
 		
-		panel_1.setLayout(null);
-		panel_1.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
-		panel_1.setBackground(Color.RED);
-		panel_1.setBounds(300, 180, 200, 50);
-		playerSelect.add(panel_1);
+		startGamePanel.setLayout(null);
+		startGamePanel.setBorder(new BevelBorder(BevelBorder.RAISED, null, null, null, null));
+		startGamePanel.setBackground(Color.RED);
+		startGamePanel.setBounds(300, 180, 200, 50);
+		playerSelect.add(startGamePanel);
 		
-		JLabel lblStartGame = new JLabel("Start Game!");
-		lblStartGame.setHorizontalAlignment(SwingConstants.CENTER);
-		lblStartGame.setForeground(Color.WHITE);
-		lblStartGame.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblStartGame.setBounds(0, 0, 200, 50);
-		panel_1.add(lblStartGame);
+		JLabel startGameLabel = new JLabel("Start Game!");
+		startGameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		startGameLabel.setForeground(Color.WHITE);
+		startGameLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		startGameLabel.setBounds(0, 0, 200, 50);
+		startGamePanel.add(startGameLabel);
 		
-		JPanel panel_7 = new JPanel();
-		panel_7.setBackground(Color.LIGHT_GRAY);
-		panel_7.setBounds(200, 450, 800, 300);
-		playerSelect.add(panel_7);
-		panel_7.setLayout(null);
+		JPanel playerNamesPanel = new JPanel();
+		playerNamesPanel.setBackground(Color.LIGHT_GRAY);
+		playerNamesPanel.setBounds(200, 450, 800, 300);
+		playerSelect.add(playerNamesPanel);
+		playerNamesPanel.setLayout(null);
 		
 
-		panel_8.setBounds(0, 0, 300, 80);
-		panel_8.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_7.add(panel_8);
+		playerOneText.setBounds(0, 0, 300, 80);
+		playerOneText.setBorder(new LineBorder(new Color(0, 0, 0)));
+		playerNamesPanel.add(playerOneText);
 		
-		JLabel lblNameOfPlayer = new JLabel("Name of Player 1:");
-		lblNameOfPlayer.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		panel_8.add(lblNameOfPlayer);
+		JLabel player1Text = new JLabel("Name of Player 1:");
+		player1Text.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		playerOneText.add(player1Text);
 		
-		txtEddie = new JTextField();
-		txtEddie.setText("Eddie");
-		panel_8.add(txtEddie);
-		txtEddie.setColumns(10);
-		
-		
-		panel_9.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_9.setBounds(500, 0, 300, 80);
-		panel_7.add(panel_9);
-		
-		JLabel label_9 = new JLabel("Name of Player 2:");
-		label_9.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		panel_9.add(label_9);
-		
-		txtHugo = new JTextField();
-		txtHugo.setText("Sam");
-		txtHugo.setColumns(10);
-		panel_9.add(txtHugo);
+		player1TextField = new JTextField();
+		player1TextField.setText("Eddie");
+		playerOneText.add(player1TextField);
+		player1TextField.setColumns(10);
 		
 		
-		panel_10.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_10.setBounds(0, 120, 300, 80);
-		panel_7.add(panel_10);
+		playerTwoText.setBorder(new LineBorder(new Color(0, 0, 0)));
+		playerTwoText.setBounds(500, 0, 300, 80);
+		playerNamesPanel.add(playerTwoText);
 		
-		JLabel label_10 = new JLabel("Name of Player 3:");
-		label_10.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		panel_10.add(label_10);
+		JLabel player2Text = new JLabel("Name of Player 2:");
+		player2Text.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		playerTwoText.add(player2Text);
 		
-		txtDiego = new JTextField();
-		txtDiego.setText("Diego");
-		txtDiego.setColumns(10);
-		panel_10.add(txtDiego);
-		
-		
-		panel_11.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_11.setBounds(500, 120, 300, 80);
-		panel_7.add(panel_11);
-		
-		JLabel label_11 = new JLabel("Name of Player 4:");
-		label_11.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		panel_11.add(label_11);
-		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		panel_11.add(textField_3);
+		player2TextField = new JTextField();
+		player2TextField.setText("Sam");
+		player2TextField.setColumns(10);
+		playerTwoText.add(player2TextField);
 		
 		
-		panel_12.setBorder(new LineBorder(new Color(0, 0, 0)));
-		panel_12.setBounds(250, 220, 300, 80);
-		panel_7.add(panel_12);
+		playerThreeText.setBorder(new LineBorder(new Color(0, 0, 0)));
+		playerThreeText.setBounds(0, 120, 300, 80);
+		playerNamesPanel.add(playerThreeText);
 		
-		JLabel lblNameOfPlayer_1 = new JLabel("Name of Player 5:");
-		lblNameOfPlayer_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		panel_12.add(lblNameOfPlayer_1);
+		JLabel player3Text = new JLabel("Name of Player 3:");
+		player3Text.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		playerThreeText.add(player3Text);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		panel_12.add(textField_4);
+		player3TextField = new JTextField();
+		player3TextField.setText("Diego");
+		player3TextField.setColumns(10);
+		playerThreeText.add(player3TextField);
+		
+		
+		playerFourText.setBorder(new LineBorder(new Color(0, 0, 0)));
+		playerFourText.setBounds(500, 120, 300, 80);
+		playerNamesPanel.add(playerFourText);
+		
+		JLabel player4Text = new JLabel("Name of Player 4:");
+		player4Text.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		playerFourText.add(player4Text);
+		
+		player4TextField = new JTextField();
+		player4TextField.setColumns(10);
+		playerFourText.add(player4TextField);
+		
+		
+		playerFiveText.setBorder(new LineBorder(new Color(0, 0, 0)));
+		playerFiveText.setBounds(250, 220, 300, 80);
+		playerNamesPanel.add(playerFiveText);
+		
+		JLabel player5Text = new JLabel("Name of Player 5:");
+		player5Text.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		playerFiveText.add(player5Text);
+		
+		player5TextField = new JTextField();
+		player5TextField.setColumns(10);
+		playerFiveText.add(player5TextField);
 		
 		map.setLayout(null);
 		Game g = new Game(map, gameState.getWorld()); 
@@ -529,8 +529,8 @@ public class WindowMain {
 				    			gameState.setCountry1(countryButton.country);
 				    			//JOptionPane.showMessageDialog(countryButton.b, "Country1 is " + gameState.getCountry1().getName());
 				    			country1.setText(gameState.getCountry1().getName());
-				    			cancelbtn.setVisible(true);
-				    			cancelbtn.setEnabled(true);
+				    			cancelCountryButton.setVisible(true);
+				    			cancelCountryButton.setEnabled(true);
 			    			}
 			    			else{
 			    				gameState.setCountry1(null);
@@ -541,8 +541,8 @@ public class WindowMain {
 			    		else if (countryButton.country.getPlayer() != gameState.getCurrPlayer() && gameState.getCountry1() != null && gameState.getCountry2() == null){
 			    			gameState.setCountry2(countryButton.country);
 			    			if (gameState.getCountry1().checkAdjacent(gameState.getCountry2())){
-			    				cancelbtn.setVisible(false);
-				    			cancelbtn.setEnabled(false);
+			    				cancelCountryButton.setVisible(false);
+				    			cancelCountryButton.setEnabled(false);
 			    				country2.setText(gameState.getCountry2().getName());
 			    				//JOptionPane.showMessageDialog(countryButton.b, "Country2 is " + gameState.getCountry2().getName());	    				
 			    				gameState.getCurrPlayer().attack(gameState.getCountry1(), gameState.getCountry2());
@@ -570,8 +570,8 @@ public class WindowMain {
 			    			}
 			    			else{
 			    				//JOptionPane.showMessageDialog(countryButton.b, "Country1 is " + gameState.getCountry1().getName());
-			    				cancelbtn.setVisible(true);
-			    				cancelbtn.setEnabled(true);
+			    				cancelCountryButton.setVisible(true);
+			    				cancelCountryButton.setEnabled(true);
 			    			}
 			    		}
 			    		else if (countryButton.country.getPlayer() == gameState.getCurrPlayer() && gameState.getCountry1() != null && gameState.getCountry2() == null){
@@ -579,8 +579,8 @@ public class WindowMain {
 			    			country2.setText(gameState.getCountry2().getName());
 			    			if (gameState.getCountry1().checkAdjacent(gameState.getCountry2())){
 			    				//JOptionPane.showMessageDialog(countryButton.b, "Country2 is " + gameState.getCountry2().getName());
-			    				cancelbtn.setVisible(false);
-				    			cancelbtn.setEnabled(false);
+			    				cancelCountryButton.setVisible(false);
+				    			cancelCountryButton.setEnabled(false);
 			    				JPanel numPanel = new JPanel();
 			    				numPanel.add(new JLabel("Select how many troops to add"));
 			    				DefaultComboBoxModel<String> selection = new DefaultComboBoxModel<String>();
@@ -623,10 +623,10 @@ public class WindowMain {
 		    });
 		}
 		
-		JLabel lblPlayer = new JLabel("");
-		lblPlayer.setIcon(new ImageIcon("GimpFiles\\Map.png"));
-		lblPlayer.setBounds(0, 30, 1194, 831);
-		map.add(lblPlayer);
+		JLabel labelPlayer = new JLabel("");
+		labelPlayer.setIcon(new ImageIcon("GimpFiles\\Map.png"));
+		labelPlayer.setBounds(0, 30, 1194, 831);
+		map.add(labelPlayer);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 1200, 30);
@@ -744,12 +744,12 @@ public class WindowMain {
 		map.add(nextStage);
 		nextStage.setLayout(null);
 		
-		JLabel lblNewLabel_1 = new JLabel("Next Stage");
-		lblNewLabel_1.setForeground(Color.WHITE);
-		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 30));
-		lblNewLabel_1.setBounds(0, 0, 170, 50);
-		nextStage.add(lblNewLabel_1);
+		JLabel nextStageLabel = new JLabel("Next Stage");
+		nextStageLabel.setForeground(Color.WHITE);
+		nextStageLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		nextStageLabel.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		nextStageLabel.setBounds(0, 0, 170, 50);
+		nextStage.add(nextStageLabel);
 		
 		JPanel panel_15 = new JPanel();
 		panel_15.setBackground(Color.LIGHT_GRAY);
@@ -757,10 +757,10 @@ public class WindowMain {
 		map.add(panel_15);
 		panel_15.setLayout(null);
 		
-		JLabel lblNewLabel_2 = new JLabel("Obtain Troops Stage");
-		lblNewLabel_2.setBounds(0, 0, 200, 31);
-		panel_15.add(lblNewLabel_2);
-		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JLabel obtainTroopLabel = new JLabel("Obtain Troops Stage");
+		obtainTroopLabel.setBounds(0, 0, 200, 31);
+		panel_15.add(obtainTroopLabel);
+		obtainTroopLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JPanel panel_16 = new JPanel();
 		panel_16.setBackground(Color.LIGHT_GRAY);
@@ -768,10 +768,10 @@ public class WindowMain {
 		map.add(panel_16);
 		panel_16.setLayout(null);
 		
-		JLabel lblAttackStage = new JLabel("Attack Stage");
-		lblAttackStage.setBounds(0, 0, 200, 31);
-		panel_16.add(lblAttackStage);
-		lblAttackStage.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JLabel attackStageLabel = new JLabel("Attack Stage");
+		attackStageLabel.setBounds(0, 0, 200, 31);
+		panel_16.add(attackStageLabel);
+		attackStageLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 		JPanel panel_17 = new JPanel();
 		panel_17.setBackground(Color.LIGHT_GRAY);
@@ -779,10 +779,10 @@ public class WindowMain {
 		map.add(panel_17);
 		panel_17.setLayout(null);
 		
-		JLabel lblMoveStaeg = new JLabel("Move Stage");
-		lblMoveStaeg.setBounds(0, 0, 200, 31);
-		panel_17.add(lblMoveStaeg);
-		lblMoveStaeg.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		JLabel moveStageLabel = new JLabel("Move Stage");
+		moveStageLabel.setBounds(0, 0, 200, 31);
+		panel_17.add(moveStageLabel);
+		moveStageLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
 		
 
 		
@@ -824,10 +824,10 @@ public class WindowMain {
 		map.add(unitDisplay);
 		unitDisplay.setLayout(null);
 		
-		JLabel lblNewLabel_4 = new JLabel("Troops Remaining: ");
-		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		lblNewLabel_4.setBounds(0, 0, 174, 30);
-		unitDisplay.add(lblNewLabel_4);
+		JLabel troopRemainingLabel = new JLabel("Troops Remaining: ");
+		troopRemainingLabel.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		troopRemainingLabel.setBounds(0, 0, 174, 30);
+		unitDisplay.add(troopRemainingLabel);
 		
 		
 		numberOfTroops.setHorizontalAlignment(SwingConstants.CENTER);
@@ -839,10 +839,10 @@ public class WindowMain {
 		Country1Display.setBounds(40, 765, 298, 35);
 		map.add(Country1Display);
 		
-		JLabel lblCountryIs = new JLabel("Country 1:");
-		lblCountryIs.setAlignmentY(Component.TOP_ALIGNMENT);
-		lblCountryIs.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		Country1Display.add(lblCountryIs);
+		JLabel Country1Label = new JLabel("Country 1:");
+		Country1Label.setAlignmentY(Component.TOP_ALIGNMENT);
+		Country1Label.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Country1Display.add(Country1Label);
 		
 		//JLabel label_13 = new JLabel((String) null);
 		country1.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -853,9 +853,9 @@ public class WindowMain {
 		Country2Display.setBounds(40, 812, 298, 35);
 		map.add(Country2Display);
 		
-		JLabel lblCountry = new JLabel("Country 2:");
-		lblCountry.setFont(new Font("Tahoma", Font.PLAIN, 20));
-		Country2Display.add(lblCountry);
+		JLabel Country2Label = new JLabel("Country 2:");
+		Country2Label.setFont(new Font("Tahoma", Font.PLAIN, 20));
+		Country2Display.add(Country2Label);
 		
 		//JLabel label_14 = new JLabel((String) null);
 		country2.setFont(new Font("Tahoma", Font.PLAIN, 20));
@@ -867,31 +867,31 @@ public class WindowMain {
 		cards.add(resultsScreen, "name_263613888585938");
 		resultsScreen.setLayout(null);
 		
-		JPanel panel_14 = new JPanel();
-		panel_14.setBackground(Color.RED);
-		panel_14.setBounds(300, 100, 600, 150);
-		resultsScreen.add(panel_14);
-		panel_14.setLayout(null);
+		JPanel playerPanelWin = new JPanel();
+		playerPanelWin.setBackground(Color.RED);
+		playerPanelWin.setBounds(300, 100, 600, 150);
+		resultsScreen.add(playerPanelWin);
+		playerPanelWin.setLayout(null);
 		
-		JLabel lblPlayername = new JLabel("playerName");
-		lblPlayername.setForeground(Color.WHITE);
-		lblPlayername.setBounds(0, 0, 600, 150);
-		panel_14.add(lblPlayername);
-		lblPlayername.setFont(new Font("Tahoma", Font.PLAIN, 70));
-		lblPlayername.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel playerWonLabell = new JLabel("playerName");
+		playerWonLabell.setForeground(Color.WHITE);
+		playerWonLabell.setBounds(0, 0, 600, 150);
+		playerPanelWin.add(playerWonLabell);
+		playerWonLabell.setFont(new Font("Tahoma", Font.PLAIN, 70));
+		playerWonLabell.setHorizontalAlignment(SwingConstants.CENTER);
 		
-		JPanel panel_18 = new JPanel();
-		panel_18.setBackground(Color.RED);
-		panel_18.setBounds(300, 280, 600, 75);
-		resultsScreen.add(panel_18);
-		panel_18.setLayout(null);
+		JPanel playerWinTextPanel = new JPanel();
+		playerWinTextPanel.setBackground(Color.RED);
+		playerWinTextPanel.setBounds(300, 280, 600, 75);
+		resultsScreen.add(playerWinTextPanel);
+		playerWinTextPanel.setLayout(null);
 		
-		JLabel lblHasWonThe = new JLabel("Has won the game!");
-		lblHasWonThe.setForeground(Color.WHITE);
-		lblHasWonThe.setBounds(0, 0, 600, 75);
-		panel_18.add(lblHasWonThe);
-		lblHasWonThe.setFont(new Font("Tahoma", Font.PLAIN, 50));
-		lblHasWonThe.setHorizontalAlignment(SwingConstants.CENTER);
+		JLabel playerWinTextLabel = new JLabel("Has won the game!");
+		playerWinTextLabel.setForeground(Color.WHITE);
+		playerWinTextLabel.setBounds(0, 0, 600, 75);
+		playerWinTextPanel.add(playerWinTextLabel);
+		playerWinTextLabel.setFont(new Font("Tahoma", Font.PLAIN, 50));
+		playerWinTextLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		
 		JLabel label_12 = new JLabel("");
 		label_12.setIcon(new ImageIcon("GimpFiles\\Soldiers.png"));
