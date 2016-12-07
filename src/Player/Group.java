@@ -38,9 +38,5 @@ public class Group {
 		this.groupName = groupName;
 	}
 	
-	public void assignName(String name){
-		groupName = name;
-	}
-	
 	
 }

@@ -42,7 +42,7 @@ public class Game {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					GameState gamestate = new GameState();
+					//GameState gamestate = new GameState();
 					JFrame frame1 = new JFrame();
 					frame1.setResizable(false);
 					frame1.setTitle("Risk - The Game of Global Domination");
@@ -54,7 +54,7 @@ public class Game {
 					
 					JPanel thing = new JPanel();
 					thing.setLayout(null);
-					new Game(thing, gamestate.getWorld());
+					//new Game(thing, gamestate.getWorld());
 					frame1.getContentPane().add(thing);
 				} catch (Exception e) {
 					e.printStackTrace();

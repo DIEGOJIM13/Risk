@@ -11,6 +11,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JOptionPane;
 
 import Player.*;
+import Window.WindowMain;
 
 public class GameState {
 	private Player currPlayer;
@@ -20,8 +21,10 @@ public class GameState {
 	private Clip music;
 	private Country country1;
 	private Country country2;
+	private WindowMain win;
 	
-	public GameState() {
+	public GameState(WindowMain win) {
+		this.win = win;
 		this.currPlayer = null;  // will set this at the beggining of the turn
 		this.allPlayers = new Group();
 		this.currPhase = 0;
@@ -29,6 +32,9 @@ public class GameState {
 		this.music = null;
 	}
 	
+	public WindowMain getWindow() {
+		return this.win;
+	}
 	public String toString() {
 		String retString = "Players playing: \n";
 		for(Player p : this.allPlayers.getPlayers()) {

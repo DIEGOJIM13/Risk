@@ -101,5 +101,4 @@ public class Country {
 	public boolean checkAdjacent(Country c1){
 		return this.borderingCountries.contains(c1);
 	}
-	public void addTroop(int num){}
 }

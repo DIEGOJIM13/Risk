@@ -52,19 +52,14 @@ public class WindowMain {
 	private JTextField player5TextField;
 	private GameState gameState;
 	private int troopsLeft;
-	/**
-	 * Create the application.
-	 * @throws IOException 
-	 */
+	private JLabel playerWonLabell;
+	private CardLayout cardLayout;
+
 	public WindowMain() throws IOException {
-		gameState = new GameState();
+		gameState = new GameState(this);
 		initialize();
 	}
 
-	/**
-	 * Initialize the contents of the frame.
-	 * @throws IOException 
-	 */
 	private void initialize() throws IOException {
 		frame1 = new JFrame();
 		frame1.setResizable(false);
@@ -96,7 +91,7 @@ public class WindowMain {
 		mainScreen.setLayout(null);
 		//frame1.getContentPane().add(mainScreen, "name_21718623405784");
 		
-		CardLayout cardLayout = (CardLayout) cards.getLayout();
+		this.cardLayout = (CardLayout) cards.getLayout();
 		JPanel startGame = new JPanel();
 		startGame.addMouseListener(new MouseAdapter() {
 			@Override
@@ -361,23 +356,23 @@ public class WindowMain {
 				gameState.playSound("music\\introToMap.wav");
 				//gameState.playSound("music\\Risk.wav");
 				if(playerOneText.isVisible()) {
-					Player p1 = new Player(player1TextField.getText(), Color.cyan);
+					Player p1 = new Player(player1TextField.getText(), Color.cyan, gameState);
 					gameState.addPlayer(p1);
 				}
 				if(playerTwoText.isVisible()) {
-					Player p2 = new Player(player2TextField.getText(), Color.magenta);
+					Player p2 = new Player(player2TextField.getText(), Color.magenta, gameState);
 					gameState.addPlayer(p2);
 				}
 				if(playerThreeText.isVisible()) {
-					Player p3 = new Player(player3TextField.getText(), Color.green);
+					Player p3 = new Player(player3TextField.getText(), Color.green, gameState);
 					gameState.addPlayer(p3);
 				}
 				if(playerFourText.isVisible()) {
-					Player p4 = new Player(player4TextField.getText(), Color.white);
+					Player p4 = new Player(player4TextField.getText(), Color.white, gameState);
 					gameState.addPlayer(p4);
 				}
 				if(playerFiveText.isVisible()) {
-					Player p5 = new Player(player5TextField.getText(), Color.yellow);
+					Player p5 = new Player(player5TextField.getText(), Color.yellow, gameState);
 					gameState.addPlayer(p5);
 				}
 				gameState.gameStart();
@@ -504,7 +499,7 @@ public class WindowMain {
 		player5TextField = new JTextField();
 		player5TextField.setColumns(10);
 		playerFiveText.add(player5TextField);
-		JLabel playerWonLabell = new JLabel("playerName");
+		this.playerWonLabell = new JLabel("playerName");
 		map.setLayout(null);
 		Game g = new Game(map, gameState.getWorld()); 
 		
@@ -553,10 +548,6 @@ public class WindowMain {
 //			    					gameState.getCountry2().getPlayer().getPlayerTextName().setVisible(false);
 //			    					gameState.getAllPlayers().getPlayers().remove(gameState.getCountry2().getPlayer());
 //			    				}
-				    			if (gameState.checkWinner() == gameState.getCurrPlayer()){
-				    				playerWonLabell.setText(gameState.getCurrPlayer().getName());
-				    				cardLayout.show(cards, "Results");
-				    			}
 				    			gameState.updateCountryLabels();
 				    			gameState.setCountry1(null);
 				    			gameState.setCountry2(null);
@@ -580,7 +571,6 @@ public class WindowMain {
 			    				country1.setText((String) null);
 			    			}
 			    			else{
-			    				//JOptionPane.showMessageDialog(countryButton.b, "Country1 is " + gameState.getCountry1().getName());
 			    				cancelCountryButton.setVisible(true);
 			    				cancelCountryButton.setEnabled(true);
 			    			}
@@ -589,7 +579,6 @@ public class WindowMain {
 			    			gameState.setCountry2(countryButton.country);
 			    			country2.setText(gameState.getCountry2().getName());
 			    			if (gameState.getCountry1().checkAdjacent(gameState.getCountry2())){
-			    				//JOptionPane.showMessageDialog(countryButton.b, "Country2 is " + gameState.getCountry2().getName());
 			    				cancelCountryButton.setVisible(false);
 				    			cancelCountryButton.setEnabled(false);
 			    				JPanel numPanel = new JPanel();
@@ -629,7 +618,6 @@ public class WindowMain {
 			    			country2.setText((String) null);
 			    		}
 		    		}
-	                //JOptionPane.showMessageDialog(countryButton.b, "You clicked on the " + countryButton.country.getName() + " button");
 	            }
 		    });
 		}
@@ -729,7 +717,6 @@ public class WindowMain {
 					gameState.getCurrPlayer().getPlayerTextName().setBackground(Color.GRAY);
 					gameState.setCountry1(null);
 	    			gameState.setCountry2(null);
-				//	JOptionPane.showMessageDialog(null, "It is the beggining of " + gameState.getCurrPlayer().getName() + "'s turn!");
 					System.out.println(gameState);
 				}
 				else if (gameState.getCurrPhase() == 1){
@@ -737,14 +724,12 @@ public class WindowMain {
 					arrow0.setVisible(false);
 					arrow1.setVisible(true);
 					arrow2.setVisible(false);
-				//	JOptionPane.showMessageDialog(null, "It is the attacking stage of " + gameState.getCurrPlayer().getName() + "'s turn!");
 				}
 				else {
 					unitDisplay.setVisible(false);
 					arrow0.setVisible(false);
 					arrow1.setVisible(false);
 					arrow2.setVisible(true);
-				//	JOptionPane.showMessageDialog(null, "It is the moving stage of " + gameState.getCurrPlayer().getName() + "'s turn!");
 				}
 				
 				
@@ -918,4 +903,10 @@ public class WindowMain {
 		});
 
 	}
+	
+	public void initializeEndGame() {
+		playerWonLabell.setText(gameState.getCurrPlayer().getName());
+		cardLayout.show(cards, "Results");
+	}
 }
+
