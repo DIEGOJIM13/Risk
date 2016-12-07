@@ -397,6 +397,7 @@ public class Game {
 		
 		
 		Kamchatka.setDoubleBounds(x + 829, y - 14, 302, 172);
+		Kamchatka.fixLabelBounds(x + 764, y - 64, 302, 172); // necessary to fix the offset from the label and the country buton
 		frame.add(Kamchatka.getLabel());
 		frame.add(Kamchatka.b);
 		buttons.add(Kamchatka);

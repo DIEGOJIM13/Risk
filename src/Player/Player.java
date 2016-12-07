@@ -22,16 +22,20 @@ import World.Country;
 import World.GameState;
 import World.World;
 
+/*
+ * This class represents all of the data and funcionality that a player would have.
+ * All of the actions that a player would do eventually comes back to this class.
+ */
 public class Player {
 	private String name;
 	private Color color;
-	private ArrayList<Troop> numTroops = new ArrayList<Troop>();
-	private ArrayList<Country> countries = new ArrayList<Country>();
-	private ArrayList<Card> hand = new ArrayList<Card>();
-	private GameState game;
-	private JFormattedTextField playerTextName;
+	private ArrayList<Troop> numTroops = new ArrayList<Troop>(); // all of the troops of a user
+	private ArrayList<Country> countries = new ArrayList<Country>(); // all of the countries a user owns
+	private ArrayList<Card> hand = new ArrayList<Card>(); // all of the cards in a player's hand
+	private GameState game; // the state of the game
+	private JFormattedTextField playerTextName; // the fields at the top that contains the player's name
 	
-	public Player(String name, Color color, GameState game) {
+	public Player(String name, Color color, GameState game) { 
 		this.name = name;
 		this.color = color;
 		this.game = game;
@@ -82,6 +86,11 @@ public class Player {
 		
 		return null;
 	}
+	/*
+	 * This class will take in a country as well as the country it is going to attack.
+	 * It will return the object of the country it wants to attack if the player is allowed to 
+	 * attack that country
+	 */
 	public Country checkIfCanAttack(Country origin, String countryName) {
 		
 		if( (this.checkIfOwned(countryName) != null) || (origin.getTroops().size() == 1) ) { // will return null if the player already owns the country or if there is only one troop
@@ -97,6 +106,9 @@ public class Player {
 		return null;
 	}
 	
+	/*
+	 * Will check to see if a
+	 */
 	public Country checkIfCanMove(Country origin, String countryName) {
 		if( (this.checkIfOwned(countryName) == null) || (origin.getTroops().size() == 1) ) { // will return null if the player already owns the country or if there is only one troop
 			return null;
