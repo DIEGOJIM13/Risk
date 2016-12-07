@@ -157,6 +157,7 @@ public class World {
 		Congo.addBorderingCountry(SouthAfrica);
 		EastAfrica.addBorderingCountry(Congo);
 		EastAfrica.addBorderingCountry(MiddleEast);
+		EastAfrica.addBorderingCountry(SouthAfrica);
 		Egypt.addBorderingCountry(MiddleEast);
 		Egypt.addBorderingCountry(EastAfrica);
 		Egypt.addBorderingCountry(SouthernEurope);
