@@ -832,7 +832,7 @@ public class WindowMain {
 		
 		JPanel Country1Display = new JPanel();
 		Country1Display.setOpaque(false);
-		Country1Display.setBounds(40, 765, 298, 35);
+		Country1Display.setBounds(30, 765, 320, 35);
 		map.add(Country1Display);
 		
 		JLabel Country1Label = new JLabel("Country 1:");
@@ -846,7 +846,7 @@ public class WindowMain {
 		
 		JPanel Country2Display = new JPanel();
 		Country2Display.setOpaque(false);
-		Country2Display.setBounds(40, 812, 298, 35);
+		Country2Display.setBounds(30, 812, 320, 35);
 		map.add(Country2Display);
 		
 		JLabel Country2Label = new JLabel("Country 2:");
